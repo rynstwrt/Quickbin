@@ -1,0 +1,21 @@
+{
+  "name": "quickbin",
+  "version": "1.0.0",
+  "description": "A quick pastebin-esque website.",
+  "main": "main.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rynstwrt/Quickbin.git"
+  },
+  "author": "Ryan Stewart",
+  "bugs": {
+    "url": "https://github.com/rynstwrt/Quickbin/issues"
+  },
+  "homepage": "https://github.com/rynstwrt/Quickbin#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
