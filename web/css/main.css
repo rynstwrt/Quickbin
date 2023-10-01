@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #14141A;
+  color: white;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+header h1 {
+  font-family: "AR One Sans", sans-serif;
+  font-size: 25px;
+  letter-spacing: 2px;
+}
+header #hamburger-icon a {
+  font-size: 28px;
+}
+
+/*# sourceMappingURL=main.css.map */
