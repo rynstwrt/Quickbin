@@ -32,7 +32,7 @@ header {
 }
 header h1 {
   font-family: "AR One Sans", sans-serif;
-  font-size: 25px;
+  font-size: 30px;
   letter-spacing: 2px;
   color: #FFA343;
 }
@@ -45,7 +45,7 @@ header #hamburger-icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 25px;
+  padding: 15px;
 }
 #center-container #center {
   background-color: #26262F;
@@ -54,6 +54,18 @@ header #hamburger-icon {
   padding: 20px;
   border-radius: 10px;
 }
+#center-container #center textarea {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  color: inherit;
+  font-family: "Poppins", sans-serif;
+  font-size: 17px;
+  letter-spacing: 1px;
+  outline: none;
+  font-weight: 300;
+}
+
 #buttons {
   display: flex;
   justify-content: center;
@@ -69,12 +81,13 @@ header #hamburger-icon {
   padding: 10px 30px;
   border-radius: 10px;
   font-family: "AR One Sans", sans-serif;
-  font-size: 12px;
+  font-size: 15px;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 2px;
   margin: 0 10px;
   width: 100%;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 #buttons button:hover {
   background-color: #FFA343;
