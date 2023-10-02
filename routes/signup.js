@@ -2,8 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
 const urlEncodedParser = bodyParser.urlencoded({ extended: false });
-const dbManager = require("../utils/db-manager");
-const {showEntries, isEmailAndUsernameAvailable} = require("../utils/db-manager");
+const DBManager = require("../utils/DBManager");
 
 
 router.use(express.static("public"));
@@ -30,7 +29,7 @@ router.post("/", urlEncodedParser, (req, res) =>
         return;
     }
 
-    isEmailAndUsernameAvailable(email, username).then(available =>
+    DBManager.isEmailAndUsernameAvailable(email, username).then(available =>
     {
         if (!available)
         {
@@ -38,11 +37,11 @@ router.post("/", urlEncodedParser, (req, res) =>
             return;
         }
 
-        dbManager.createUser(email, username, password);
+        DBManager.createUser(email, username, password);
     });
 
     // res.redirect("/");
-    showEntries();
+    DBManager.showEntries();
 });
 
 
