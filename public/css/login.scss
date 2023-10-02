@@ -12,6 +12,16 @@ main
     {
         background-color: $center-color;
         padding: 50px 50px;
+        border-radius: 10px;
+
+        h3
+        {
+            font-family: $font-1;
+            font-weight: $font-1-bold;
+            font-size: 30px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
 
         form
         {
@@ -33,22 +43,10 @@ main
                 border-radius: 10px;
             }
 
-            #login-error-text
-            {
-                font-family: $font-1;
-                font-size: 17px;
-                text-align: center;
-                width: 100%;
-                max-width: 250px;
-                margin-top: 10px;
-                color: #F34A4A;
-                letter-spacing: 1px;
-            }
-
             button
             {
                 max-width: 150px;
-                margin-top: 40px;
+                margin-top: 20px;
             }
         }
     }

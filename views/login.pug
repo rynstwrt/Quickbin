@@ -5,16 +5,21 @@ html
         // STYLESHEETS
         link(rel='stylesheet' type='text/css' href='./css/login.css')
 
+        // SCRIPTS
+        //script(src="./js/make-post-request.js" defer)
+        script(src="./js/login-posts.js" defer)
     body
         include includes/header
 
         main
             div#login-form-container
-                form(action="" method="POST")
-                    input(type="text" name="username" placeholder="username")
-                    input(type="password" name="password" placeholder="password")
-                    input(type="password" name="password-confirm" placeholder="confirm password")
-                    p#login-error-text Password confirmation does not match.
-                    button(type="submit") Submit
+                h3 Login
+                form(action="/login" method="POST")
+                    input(type="text" name="username" placeholder="Username")
+                    input(type="password" name="password" placeholder="Password")
+                    input(type="password" name="password-confirm" placeholder="Confirm Password")
+                    button(id="login-submit" type="submit") Submit
+
+        include includes/side-menu
 
 

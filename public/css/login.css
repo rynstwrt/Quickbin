@@ -14,6 +14,7 @@ body {
   color: white;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 header {
@@ -23,14 +24,22 @@ header {
   padding: 20px;
 }
 header a {
-  font-family: "AR One Sans", sans-serif;
-  font-weight: 700;
   font-size: 30px;
   letter-spacing: 2px;
   color: #FFA343;
+}
+header a:first-of-type {
+  font-family: "AR One Sans", sans-serif;
+  font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 5px;
   text-decoration-color: #FFB261;
+}
+header a:last-of-type {
+  color: white;
+}
+header a:last-of-type:hover {
+  color: #FFA343;
 }
 
 a {
@@ -65,6 +74,61 @@ button:hover {
   color: #14141A;
 }
 
+#side-menu {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #26262F;
+  left: 100%;
+  transition: left 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#side-menu #side-menu-header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px;
+}
+#side-menu #side-menu-header .hamburger-icon {
+  color: #FFA343;
+}
+#side-menu #side-menu-header .hamburger-icon:hover {
+  color: #FFB261;
+}
+#side-menu #side-menu-list {
+  list-style: none;
+}
+#side-menu #side-menu-list li {
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 15px;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  transition: background-color 0.2s ease-in-out;
+}
+#side-menu #side-menu-list li:hover {
+  background-color: white;
+}
+#side-menu #side-menu-list li:hover a {
+  color: #14141A;
+}
+#side-menu #side-menu-list li > a {
+  width: 100%;
+  font-family: "AR One Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #FFA343;
+  text-decoration: none;
+  text-align: center;
+}
+
 main {
   height: 100%;
   display: flex;
@@ -74,6 +138,14 @@ main {
 main #login-form-container {
   background-color: #26262F;
   padding: 50px 50px;
+  border-radius: 10px;
+}
+main #login-form-container h3 {
+  font-family: "AR One Sans", sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
 }
 main #login-form-container form {
   display: flex;
@@ -90,19 +162,9 @@ main #login-form-container form input {
   margin: 10px 0;
   border-radius: 10px;
 }
-main #login-form-container form #login-error-text {
-  font-family: "AR One Sans", sans-serif;
-  font-size: 17px;
-  text-align: center;
-  width: 100%;
-  max-width: 250px;
-  margin-top: 10px;
-  color: #F34A4A;
-  letter-spacing: 1px;
-}
 main #login-form-container form button {
   max-width: 150px;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 /*# sourceMappingURL=login.css.map */

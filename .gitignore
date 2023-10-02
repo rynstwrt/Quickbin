@@ -1,1 +1,3 @@
 /node_modules
+/createDb-secrets.js
+.env
