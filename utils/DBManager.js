@@ -74,7 +74,7 @@ module.exports = class DBManager
     }
 
 
-    static #findUserByEmail(email)
+    static findUserByEmail(email)
     {
         return new Promise((res, rej) =>
         {
@@ -124,7 +124,7 @@ module.exports = class DBManager
 
     static getPasswordFromEmail(email)
     {
-        const user = this.#findUserByEmail(email);
+        const user = this.findUserByEmail(email);
         return user["Password"];
     }
 }

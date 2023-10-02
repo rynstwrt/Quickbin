@@ -3,8 +3,8 @@ const router = express.Router();
 router.use(express.static("public"));
 const bodyParser = require("body-parser");
 const urlEncodedParser = bodyParser.urlencoded({ extended: false });
-const dbManager = require("../utils/db-manager");
-const { showEntries, findUserByEmail, getPasswordFromEmail} = require("../utils/db-manager");
+const DBManager = require("../utils/DBManager.js");
+// const dbManager = require("../utils/db-manager");
 
 
 router.get("/", (req, res) =>
@@ -24,7 +24,7 @@ router.post("/", urlEncodedParser, (req, res) =>
     const email = req.body.email;
     const password = req.body.password;
 
-    dbManager.findUserByEmail(email).then(user =>
+    DBManager.findUserByEmail(email).then(user =>
     {
         if (!user)
         {

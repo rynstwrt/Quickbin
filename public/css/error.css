@@ -3,6 +3,7 @@
   padding: 0;
   border: 0;
   box-sizing: border-box;
+  z-index: 2;
 }
 
 html, body {
@@ -15,6 +16,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  z-index: 0;
 }
 
 header {
@@ -98,6 +100,12 @@ button:hover {
 #side-menu #side-menu-header .hamburger-icon:hover {
   color: #FFB261;
 }
+#side-menu h2 {
+  font-family: "AR One Sans", sans-serif;
+  font-size: 40px;
+  text-align: right;
+  min-width: 300px;
+}
 #side-menu #side-menu-list {
   list-style: none;
 }
@@ -127,6 +135,15 @@ button:hover {
   color: #FFA343;
   text-decoration: none;
   text-align: center;
+}
+
+#particles {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
 }
 
 /*# sourceMappingURL=error.css.map */

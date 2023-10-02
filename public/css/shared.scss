@@ -9,6 +9,7 @@
     padding: 0;
     border: 0;
     box-sizing: border-box;
+    z-index: 2;
 }
 
 
@@ -25,6 +26,7 @@ body
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    z-index: 0;
 }
 
 
@@ -136,6 +138,14 @@ button
         }
     }
 
+    h2
+    {
+        font-family: $font-1;
+        font-size: 40px;
+        text-align: right;
+        min-width: 300px;
+    }
+
     #side-menu-list
     {
         list-style: none;
@@ -175,4 +185,15 @@ button
             }
         }
     }
+}
+
+
+#particles
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
 }
