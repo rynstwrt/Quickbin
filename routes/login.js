@@ -8,7 +8,7 @@ const DBManager = require("../utils/DBManager.js");
 
 router.get("/", (req, res) =>
 {
-    res.render("login");
+    res.render("login", { session: req.session });
 });
 
 
@@ -28,19 +28,30 @@ router.post("/", urlEncodedParser, (req, res) =>
         if (!user)
         {
             res.send("not found")
+            res.end();
             return
         }
 
-        const targetPassword = user["Password"];
-
-        if (password === targetPassword)
+        if (password === user["Password"])
         {
-            onSuccessfulLogin(user);
-            res.send("CORRECT PASSWORD! ");
-            return;
+            console.log("CORRECT PASSWORD FOR " + user["Username"] + "!");
+            // res.send("CORRECT PASSWORD! ");
+            // return;
+
+            // req.session.user_id = user["ID"];
+
+            // console.log(user);
+            // userInfo.userInfoID = user["ID"];
+            // userInfo.userUsername = user["Username"];
+            // userInfo.userEmail = user["Email"];
+
+            // console.log(req.session)
+
+            res.redirect("/");
         }
 
-        res.send("FOUND! " + targetPassword);
+
+        // res.send("FOUND! " + targetPassword);
     });
 });
 

@@ -31,19 +31,26 @@ router.post("/", urlEncodedParser, (req, res) =>
 
     DBManager.isEmailAndUsernameAvailable(email, username).then(available =>
     {
+        if (available.email && available.username)
+        {
+            DBManager.createUser(email, username, password);
+        }
+
         if (!available.email)
         {
-            res.send("EMAIL ALREADY REGISTERED");
-            return;
+            console.log("SKIPPING B/C EMAIL EXISTS");
+            // res.send("EMAIL ALREADY REGISTERED");
+            // return;
         }
 
         if (!available.username)
         {
-            res.send("USERNAME UNAVAILABLE");
-            return;
+            console.log("SKIPPING B/C USERNAME EXISTS");
+            // res.send("USERNAME UNAVAILABLE");
+            // return;
         }
 
-        DBManager.createUser(email, username, password);
+        res.redirect("/");
     });
 
     // res.redirect("/");

@@ -1,7 +1,9 @@
+// - const welcomeText = "Hello! asfd"
+
 #side-menu
     #side-menu-header
         a.hamburger-icon.fa-solid.fa-bars
-    h2#welcome-text Hello.
+    h2#welcome-text= session.type
     ul#side-menu-list
         li
             a(href='/login') Login
