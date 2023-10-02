@@ -1,0 +1,66 @@
+@import "partials/colors";
+@import "partials/fonts";
+@import "partials/breakpoints";
+
+
+*
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+
+html, body
+{
+    height: 100%;
+}
+
+
+body
+{
+    background-color: $background;
+    color: $text-color;
+    display: flex;
+    flex-direction: column;
+}
+
+
+header
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+
+    h1
+    {
+        font-family: $font-1;
+        font-size: 30px;
+        letter-spacing: 2px;
+        color: $accent;
+        text-decoration: underline;
+        text-underline-offset: 5px;
+        text-decoration-color: $accent-2;
+    }
+}
+
+
+a
+{
+    cursor: pointer;
+    transition: color .2s ease-in-out;
+
+    &:hover
+    {
+        color: $accent;
+    }
+}
+
+
+.hamburger-icon
+{
+    font-size: 25px;
+}
+

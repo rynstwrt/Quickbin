@@ -1,0 +1,28 @@
+doctype html
+head
+    include includes/head
+
+    // STYLESHEETS
+    link(rel='stylesheet' type='text/css' href='./css/home.css')
+
+body
+    include includes/header
+
+    #center-container
+        #center
+            textarea#text-area
+    #buttons
+        button#save-button Save
+        // <button id="reset-button">New Quickbin</button>
+    #side-menu
+        #side-menu-header
+            a.hamburger-icon.fa-solid.fa-bars
+        ul#side-menu-list
+            li
+                a(href='#') Login
+            li
+                a(href='#') Register
+            li
+                a(href='#') New Quickbin
+            li
+                a(href='#') About

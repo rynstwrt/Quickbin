@@ -5,12 +5,19 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.use(express.static("public"));
+app.set("view engine", "pug");
 
 
 app.get("/", (req, res) =>
 {
-    // res.send("asdf")
-    res.sendFile(path.join(__dirname, "./views/index.html"))
+    res.render("index");
+    // res.sendFile(path.join(__dirname, "./views/index.html"))
+});
+
+
+app.get("/login", (req, res) =>
+{
+    res.render("login");
 });
 
 
