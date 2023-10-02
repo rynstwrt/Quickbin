@@ -47,7 +47,7 @@ module.exports = class DBManager
     }
 
 
-    // UserID, Email, FirstName, LastName, Username, Password
+    // UserID, Email, Username, Password
     static createUser(email, username, password)
     {
         console.log(`Creating user with username ${username}.`);

@@ -16,6 +16,7 @@ router.get("/", (req, res) =>
 
 router.post("/", urlEncodedParser, (req, res) =>
 {
+    console.log(req.body)
     const email = req.body.email;
     const username = req.body.username;
     const password = req.body.password;
@@ -23,6 +24,7 @@ router.post("/", urlEncodedParser, (req, res) =>
 
     console.log("SIGNING UP: ", email, username, password, passwordConfirm);
 
+    return;
     if (password !== passwordConfirm)
     {
         res.send("PASSWORDS DON'T MATCH");
@@ -47,7 +49,7 @@ router.post("/", urlEncodedParser, (req, res) =>
     });
 
     // res.redirect("/");
-    DBManager.showEntries();
+    // DBManager.showEntries();
 });
 
 

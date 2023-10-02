@@ -16,7 +16,8 @@ html
         main
             div#login-form-container
                 h3 Sign Up
-                form(action="/signup" method="POST")
+                //form(action="/signup" method="POST")
+                form(id="signup-form")
                     if POPULATE_INPUTS
                         input(type="email" name="email" value="woofyryn@gmail.com")
                         input(type="text" name="username" value="WoofyRyn")

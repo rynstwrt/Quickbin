@@ -4,7 +4,6 @@ router.use(express.static("public"));
 const bodyParser = require("body-parser");
 const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 const DBManager = require("../utils/DBManager.js");
-// const dbManager = require("../utils/db-manager");
 
 
 router.get("/", (req, res) =>

@@ -31,6 +31,7 @@ header a {
   color: #FFA343;
 }
 header a:first-of-type {
+  font-size: 32px;
   font-family: "AR One Sans", sans-serif;
   font-weight: 700;
   text-decoration: underline;
