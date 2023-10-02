@@ -1,13 +1,12 @@
+- const POPULATE_INPUTS = true;
+
 html
     head
         include includes/head
 
         // STYLESHEETS
+        link(rel='stylesheet' type='text/css' href='./css/login-and-signup.css')
         link(rel='stylesheet' type='text/css' href='./css/login.css')
-
-        // SCRIPTS
-        //script(src="./js/make-post-request.js" defer)
-        script(src="./js/login-posts.js" defer)
     body
         include includes/header
 
@@ -15,9 +14,12 @@ html
             div#login-form-container
                 h3 Login
                 form(action="/login" method="POST")
-                    input(type="text" name="username" placeholder="Username")
-                    input(type="password" name="password" placeholder="Password")
-                    input(type="password" name="password-confirm" placeholder="Confirm Password")
+                    if POPULATE_INPUTS
+                        input(type="email" name="email" value="woofyryn@gmail.com")
+                        input(type="password" name="password" value="toor")
+                    else
+                        input(type="email" name="email" placeholder="Username")
+                        input(type="password" name="password" placeholder="Password")
                     button(id="login-submit" type="submit") Submit
 
         include includes/side-menu

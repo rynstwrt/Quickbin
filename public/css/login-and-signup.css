@@ -129,4 +129,55 @@ button:hover {
   text-align: center;
 }
 
-/*# sourceMappingURL=login.css.map */
+main {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+main #login-form-container {
+  background-color: #26262F;
+  padding: 50px 30px;
+  border-radius: 10px;
+  width: 100%;
+}
+main #login-form-container h3 {
+  font-family: "AR One Sans", sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+main #login-form-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+main #login-form-container form input, main #login-form-container form button {
+  display: block;
+}
+main #login-form-container form input {
+  font-size: 17px;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border-radius: 10px;
+  width: 100%;
+}
+main #login-form-container form #login-error-text {
+  font-family: "AR One Sans", sans-serif;
+  font-size: 17px;
+  text-align: center;
+  width: 100%;
+  max-width: 250px;
+  margin-top: 10px;
+  color: #F34A4A;
+  letter-spacing: 1px;
+}
+main #login-form-container form button {
+  max-width: 150px;
+  margin-top: 20px;
+}
+
+/*# sourceMappingURL=login-and-signup.css.map */

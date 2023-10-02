@@ -3,6 +3,8 @@ const router = express.Router();
 router.use(express.static("public"));
 const bodyParser = require("body-parser");
 const urlEncodedParser = bodyParser.urlencoded({ extended: false });
+const dbManager = require("../utils/db-manager");
+const { showEntries, findUserByEmail, getPasswordFromEmail} = require("../utils/db-manager");
 
 
 router.get("/", (req, res) =>
@@ -11,21 +13,36 @@ router.get("/", (req, res) =>
 });
 
 
+function onSuccessfulLogin(user)
+{
+    console.log("LOGGING IN " + user["Username"]);
+}
+
+
 router.post("/", urlEncodedParser, (req, res) =>
 {
-    const username = req.body.username;
+    const email = req.body.email;
     const password = req.body.password;
-    const passwordConfirm = req.body["password-confirm"];
 
-    // TODO: check if username exists
-
-    if (password !== passwordConfirm)
+    dbManager.findUserByEmail(email).then(user =>
     {
-        res.render("error", {bigText: "Error!", smallText: "Password and password confirmation do not match!"});
-        return;
-    }
+        if (!user)
+        {
+            res.send("not found")
+            return
+        }
 
-    console.log(username, password, passwordConfirm);
+        const targetPassword = user["Password"];
+
+        if (password === targetPassword)
+        {
+            onSuccessfulLogin(user);
+            res.send("CORRECT PASSWORD! ");
+            return;
+        }
+
+        res.send("FOUND! " + targetPassword);
+    });
 });
 
 

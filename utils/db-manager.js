@@ -19,7 +19,7 @@ function makeQuery(query)
             if (err) return rej(err);
             res(Object.values(JSON.parse(JSON.stringify(result))));
         });
-    })
+    });
 }
 
 
@@ -46,18 +46,17 @@ function showColumns()
 
 
 // UserID, Email, FirstName, LastName, Username, Password
-function createUser(email, firstName, lastName, username, password)
+function createUser(email, username, password)
 {
     console.log(`Creating user with username ${username}.`);
 
-    const columns = "(Email, FirstName, LastName, Username, Password)";
-    const values = `('${email}', '${firstName}', '${lastName}', '${username}', '${password}')`;
+    const columns = "(Email, Username, Password)";
+    const values = `('${email}', '${username}', '${password}')`;
     const query = `INSERT INTO ${process.env.USERS_TABLE} ${columns} VALUES ${values};`;
 
     makeQuery(query).then(() =>
     {
         console.log("Closing connection.");
-        connection.end();
     });
 }
 
@@ -72,7 +71,59 @@ function deleteUser(userID)
     });
 }
 
-// deleteUser(3);
-// createUser("a", "first", "last", "woofy", "test");
-// showEntries();
-showColumns();
+
+function findUserByEmail(email)
+{
+    return new Promise((res, rej) =>
+    {
+        const query = `SELECT * FROM ${process.env.USERS_TABLE} WHERE Email='${email}'`;
+
+        makeQuery(query).then(response =>
+        {
+            if (response)
+            {
+                const user = response[0];
+                return res(user);
+            }
+
+            return rej();
+        });
+    });
+}
+
+
+function isEmailAndUsernameAvailable(email, username)
+{
+    return new Promise((res, rej) =>
+    {
+        const query = `SELECT * FROM ${process.env.USERS_TABLE} WHERE Email='${email}' OR Username='${username}'`;
+
+        makeQuery(query).then(response =>
+        {
+            return (response.length > 0) ? res(false) : res(true);
+        });
+    });
+}
+
+
+function getPasswordFromEmail(email)
+{
+    const user = findUserByEmail(email);
+    return user["Password"];
+}
+
+
+module.exports = {
+    showEntries: showEntries,
+    findUserByEmail: findUserByEmail,
+    getPasswordFromEmail: getPasswordFromEmail,
+    createUser: createUser,
+    isEmailAndUsernameAvailable: isEmailAndUsernameAvailable
+    // deleteAllUsersFromDB: deleteAllUsersFromDB,
+    // endDBConnection: endDBConnection
+};
+
+
+/*
+    INSERT INTO users IF NOT EXIST (Email, FirstName, LastName, Username, Password) VALUES ('woofyryn@gmail.com', 'Ryn', 'Stewart', 'Ryn', 'toor');
+ */
