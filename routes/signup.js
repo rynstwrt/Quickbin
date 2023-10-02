@@ -31,9 +31,15 @@ router.post("/", urlEncodedParser, (req, res) =>
 
     DBManager.isEmailAndUsernameAvailable(email, username).then(available =>
     {
-        if (!available)
+        if (!available.email)
         {
-            res.send("USERNAME UNAVAILABLE OR EMAIL ALREADY IN USE.");
+            res.send("EMAIL ALREADY REGISTERED");
+            return;
+        }
+
+        if (!available.username)
+        {
+            res.send("USERNAME UNAVAILABLE");
             return;
         }
 

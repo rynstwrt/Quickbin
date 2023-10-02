@@ -8,6 +8,8 @@ html
         link(rel='stylesheet' type='text/css' href='./css/login-and-signup.css')
         link(rel='stylesheet' type='text/css' href='./css/signup.css')
 
+        // SCRIPTS
+        script(src="./js/signup-button.js" defer)
     body
         include includes/header
 
@@ -25,6 +27,7 @@ html
                         input(type="text" name="username" placeholder="Username")
                         input(type="password" name="password" placeholder="Password")
                         input(type="password" name="confirm-password" placeholder="Password")
-                    button(id="login-submit" type="submit") Submit
+                    //button(id="signin-submit") Submit
+                    button(id="signin-submit" type="submit") Submit
 
         include includes/side-menu

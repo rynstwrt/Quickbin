@@ -58,7 +58,7 @@ module.exports = class DBManager
 
         this.#makeQuery(query).then(() =>
         {
-            console.log("Closing connection.");
+            console.log(`Created user ${username}!`);
         });
     }
 
@@ -102,7 +102,21 @@ module.exports = class DBManager
 
             this.#makeQuery(query).then(response =>
             {
-                return (response.length > 0) ? res(false) : res(true);
+                const available = {
+                    email: true,
+                    username: true
+                };
+
+                for (const user of response)
+                {
+                    if (user["Email"].toLowerCase() === email.toLowerCase())
+                        available.email = false;
+
+                    if (user.Username.toLowerCase() === username.toLowerCase())
+                        available.username = false;
+                }
+
+                return res(available);
             });
         });
     }
