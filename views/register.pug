@@ -3,7 +3,7 @@ html
         include includes/head
 
         // STYLESHEETS
-        link(rel='stylesheet' type='text/css' href='./css/login.css')
+        link(rel='stylesheet' type='text/css' href='./css/register.css')
 
     body
         include includes/header
@@ -12,9 +12,7 @@ html
             div#login-form-container
                 form(action="" method="POST")
                     input(type="text" name="username" placeholder="username")
-                    input(type="password" name="password" placeholder="password")
-                    input(type="password" name="password-confirm" placeholder="confirm password")
-                    p#login-error-text Password confirmation does not match.
+                    input(type="password" name="password")
                     button(type="submit") Submit
 
 

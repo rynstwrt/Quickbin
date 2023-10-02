@@ -49,24 +49,10 @@
     button
     {
         height: 100%;
-        background-color: transparent;
-        border: 1px solid $accent;
-        color: $accent;
-        padding: 15px 30px;
-        border-radius: 10px;
-        font-family: $font-1;
-        font-size: 15px;
-        text-transform: uppercase;
-        font-weight: $font-1-semibold;
-        letter-spacing: 3px;
-        margin: 0 10px;
-        width: 100%;
-        transition: background-color .2s ease-in-out, color .2s ease-in-out;
 
-        &:hover
+        @include sm
         {
-            background-color: $accent;
-            color: $background;
+            max-width: 500px;
         }
     }
 }
@@ -87,11 +73,20 @@
     #side-menu-header
     {
         width: 100%;
-        color: $accent;
         display: flex;
         justify-content: flex-end;
         align-items: center;
         padding: 20px;
+
+        .hamburger-icon
+        {
+            color: $accent;
+
+            &:hover
+            {
+                color: $accent-2;
+            }
+        }
     }
 
     #side-menu-list
