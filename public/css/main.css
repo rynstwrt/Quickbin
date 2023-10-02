@@ -35,8 +35,12 @@ header h1 {
   font-size: 30px;
   letter-spacing: 2px;
   color: #FFA343;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-color: #FFB261;
 }
-header #hamburger-icon {
+
+.hamburger-icon {
   font-size: 25px;
 }
 
@@ -72,19 +76,20 @@ header #hamburger-icon {
   align-items: center;
   padding-right: 20px;
   padding-left: 20px;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 }
 #buttons button {
+  height: 100%;
   background-color: transparent;
   border: 1px solid #FFA343;
   color: #FFA343;
-  padding: 10px 30px;
+  padding: 15px 30px;
   border-radius: 10px;
   font-family: "AR One Sans", sans-serif;
   font-size: 15px;
   text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 2px;
+  font-weight: 600;
+  letter-spacing: 3px;
   margin: 0 10px;
   width: 100%;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
@@ -92,6 +97,56 @@ header #hamburger-icon {
 #buttons button:hover {
   background-color: #FFA343;
   color: #14141A;
+}
+
+#side-menu {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #26262F;
+  left: 100%;
+  transition: left 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#side-menu #side-menu-header {
+  width: 100%;
+  color: #FFA343;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px;
+}
+#side-menu #side-menu-list {
+  list-style: none;
+}
+#side-menu #side-menu-list li {
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 15px;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  transition: background-color 0.2s ease-in-out;
+}
+#side-menu #side-menu-list li:hover {
+  background-color: white;
+}
+#side-menu #side-menu-list li:hover a {
+  color: #14141A;
+}
+#side-menu #side-menu-list li > a {
+  width: 100%;
+  font-family: "AR One Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #FFA343;
+  text-decoration: none;
+  text-align: center;
 }
 
 /*# sourceMappingURL=main.css.map */

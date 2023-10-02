@@ -51,12 +51,15 @@ header
         font-size: 30px;
         letter-spacing: 2px;
         color: $accent;
+        text-decoration: underline;
+        text-underline-offset: 5px;
+        text-decoration-color: $accent-2;
     }
+}
 
-    #hamburger-icon
-    {
-        font-size: 25px;
-    }
+.hamburger-icon
+{
+    font-size: 25px;
 }
 
 
@@ -99,20 +102,21 @@ header
     align-items: center;
     padding-right: 20px;
     padding-left: 20px;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
 
     button
     {
+        height: 100%;
         background-color: transparent;
         border: 1px solid $accent;
         color: $accent;
-        padding: 10px 30px;
+        padding: 15px 30px;
         border-radius: 10px;
         font-family: $font-1;
         font-size: 15px;
         text-transform: uppercase;
-        font-weight: $font-1-bold;
-        letter-spacing: 2px;
+        font-weight: $font-1-semibold;
+        letter-spacing: 3px;
         margin: 0 10px;
         width: 100%;
         transition: background-color .2s ease-in-out, color .2s ease-in-out;
@@ -121,6 +125,70 @@ header
         {
             background-color: $accent;
             color: $background;
+        }
+    }
+}
+
+
+#side-menu
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: $center-color;
+    left: 100%;
+    transition: left .2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    #side-menu-header
+    {
+        width: 100%;
+        color: $accent;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 20px;
+    }
+
+    #side-menu-list
+    {
+        list-style: none;
+
+        li
+        {
+            border: 1px solid $text-color;
+            border-radius: 10px;
+            padding: 15px;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            transition: background-color .2s ease-in-out;
+
+            &:hover
+            {
+                background-color: $text-color;
+
+                a
+                {
+                    color: $background;
+                }
+            }
+
+            & > a
+            {
+                width: 100%;
+                font-family: $font-1;
+                font-weight: $font-1-medium;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                color: $accent;
+                text-decoration: none;
+                text-align: center;
+            }
         }
     }
 }

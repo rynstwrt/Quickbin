@@ -36,20 +36,35 @@
 
     <!--  SCRIPTS  -->
     <script src="https://kit.fontawesome.com/d1ed772a88.js" crossorigin="anonymous" defer></script>
+    <script src="./js/side-menu.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>Quickbin</h1>
-        <a id="hamburger-icon" class="fa-solid fa-bars"></a>
+        <h1>quickbin.</h1>
+        <a class="hamburger-icon fa-solid fa-bars"></a>
     </header>
+
     <div id="center-container">
         <div id="center">
             <textarea></textarea>
         </div>
     </div>
+
     <div id="buttons">
         <button id="save-button">Save</button>
-        <button id="reset-button">Reset</button>
+<!--        <button id="reset-button">New Quickbin</button>-->
+    </div>
+
+    <div id="side-menu">
+        <div id="side-menu-header">
+            <a class="hamburger-icon fa-solid fa-bars"></a>
+        </div>
+        <ul id="side-menu-list">
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Register</a></li>
+            <li><a href="#">New Quickbin</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
     </div>
 </body>
 </html>
