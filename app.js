@@ -12,6 +12,7 @@ const loginRoute = require("./routes/login");
 const logoutRoute = require("./routes/logout");
 const signUpRoute = require("./routes/signup");
 const errorRoute = require("./routes/error");
+const devRoute = require("./routes/dev");
 
 
 // CONSTANTS
@@ -44,6 +45,7 @@ app.use("/login", loginRoute);
 app.use("/logout", logoutRoute);
 app.use("/signup", signUpRoute);
 app.use("/error", errorRoute);
+app.use("/dev", devRoute);
 
 
 // APP LISTENING

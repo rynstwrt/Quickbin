@@ -127,4 +127,15 @@ module.exports = class DBManager
         const user = this.findUserByEmail(email);
         return user["Password"];
     }
+
+
+    static deleteAllUsers()
+    {
+        this.#makeQuery(`DELETE FROM ${process.env.USERS_TABLE}`).then(resp =>
+        {
+            // console.log(resp);
+            console.log("Deleted all users!");
+            // this.showEntries();
+        });
+    }
 }
