@@ -20,7 +20,6 @@ headerHamburgerMenu.addEventListener("click", () =>
 
 menuHamburgerMenu.addEventListener("click", () =>
 {
-    // sideMenu.style.left = "100%";
     isOpen = false;
     toggleMenu(isOpen);
 });
@@ -28,7 +27,6 @@ menuHamburgerMenu.addEventListener("click", () =>
 
 document.addEventListener("keydown", key =>
 {
-    // console.log(key.key);
     if (key.key === "Tab")
     {
         isOpen = !isOpen;
