@@ -5,7 +5,10 @@ router.use(express.static("public"));
 
 router.get("/", (req, res) =>
 {
-    res.render("error", {bigText: "Error!", smallText: "asdf"});
+    const error = req.query.error || "";
+    const details = req.query.details || "";
+
+    res.render("error", { error: error, details: details });
 });
 
 

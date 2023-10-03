@@ -8,15 +8,8 @@ const DBManager = require("../utils/DBManager.js");
 
 router.get("/", (req, res) =>
 {
-    console.log(req.session)
     res.render("login", { session: req.session });
 });
-
-
-function onSuccessfulLogin(user)
-{
-    console.log("LOGGING IN " + user["Username"]);
-}
 
 
 router.post("/", urlEncodedParser, (req, res) =>
@@ -26,27 +19,21 @@ router.post("/", urlEncodedParser, (req, res) =>
 
     DBManager.findUserByEmail(email).then(user =>
     {
-        if (!user)
+        if (!user || password !== user["Password"])
         {
-            res.send("not found")
+            res.redirect("/error?error=Incorrect email or password.&details=The email you entered does not exist or was submited with an invalid password.");
             res.end();
             return
         }
 
-        if (password === user["Password"])
-        {
-            console.log("CORRECT PASSWORD FOR " + user["Username"] + "!");
+        console.log("CORRECT PASSWORD FOR " + user["Username"] + "!");
 
-            req.session.userID = user["ID"];
-            req.session.userUsername = user["Username"];
-            req.session.userEmail = user["Email"];
+        req.session.userID = user["ID"];
+        req.session.userUsername = user["Username"];
+        req.session.userEmail = user["Email"];
 
-            res.redirect("/");
-            res.end();
-            return;
-        }
-
-        res.send("Incorrect password!");
+        res.redirect("/");
+        res.end();
     });
 });
 

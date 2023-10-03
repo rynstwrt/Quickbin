@@ -25,7 +25,8 @@ router.post("/", urlEncodedParser, (req, res) =>
 
     if (password !== passwordConfirm)
     {
-        res.send("PASSWORDS DON'T MATCH");
+        res.redirect("/error?error=Passwords do not match.&details=The entered password and password confirmation do not match.");
+        res.end();
         return;
     }
 
@@ -39,22 +40,21 @@ router.post("/", urlEncodedParser, (req, res) =>
         if (!available.email)
         {
             console.log("SKIPPING B/C EMAIL EXISTS");
-            // res.send("EMAIL ALREADY REGISTERED");
-            // return;
+            res.redirect("/error?error=User with this email already exists.&details=That email is already registered.");
+            res.end();
+            return;
         }
 
         if (!available.username)
         {
             console.log("SKIPPING B/C USERNAME EXISTS");
-            // res.send("USERNAME UNAVAILABLE");
-            // return;
+            res.redirect("/error?error=User with this username already exists.&details=That username is taken.");
+            res.end();
+            return;
         }
 
         res.redirect("/");
     });
-
-    // res.redirect("/");
-    // DBManager.showEntries();
 });
 
 
