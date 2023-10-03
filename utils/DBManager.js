@@ -136,4 +136,30 @@ module.exports = class DBManager
             console.log("Deleted all users!");
         });
     }
+
+
+    static getUserPosts(uuid)
+    {
+        return new Promise((res, rej) =>
+        {
+            this.#makeQuery(`SELECT * FROM ${process.env.POSTS_TABLE} WHERE User_UUID="${uuid}"`).then(resp =>
+            {
+                console.log(resp);
+                return res(resp);
+            });
+        });
+    }
+
+
+    static savePost(userUUID, text)
+    {
+        const columns = "(Post_UUID, User_UUID, Text)";
+        const values = `(UUID(), '${userUUID}', '${text}')`;
+        const query = `INSERT INTO ${process.env.POSTS_TABLE} ${columns} VALUES ${values};`;
+
+        this.#makeQuery(query).then(resp =>
+        {
+            console.log(resp);
+        });
+    }
 }

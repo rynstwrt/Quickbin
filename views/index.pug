@@ -4,13 +4,16 @@ head
 
     // STYLESHEETS
     link(rel='stylesheet' type='text/css' href='./css/home.css')
+
+    // SCRIPTS
+    script(src="./js/save-button.js" defer)
 body
     include includes/header
 
     #center-container
         #center
             textarea#text-area
-    #buttons
+    form(action="/saved/save" method="POST")
         button#save-button Save
         // <button id="reset-button">New Quickbin</button>
 
