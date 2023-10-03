@@ -52,8 +52,8 @@ module.exports = class DBManager
     {
         console.log(`Creating user with username ${username}.`);
 
-        const columns = "(Email, Username, Password)";
-        const values = `('${email}', '${username}', '${password}')`;
+        const columns = "(UUID, Email, Username, Password)";
+        const values = `(UUID(), '${email}', '${username}', '${password}')`;
         const query = `INSERT INTO ${process.env.USERS_TABLE} ${columns} VALUES ${values};`;
 
         this.#makeQuery(query).then(() =>
@@ -63,13 +63,13 @@ module.exports = class DBManager
     }
 
 
-    static deleteUser(userID)
+    static deleteUser(uuid)
     {
-        console.log(`Deleting user #${userID}...`);
+        console.log(`Deleting user with UUID ${uuid}...`);
 
-        this.#makeQuery(`DELETE FROM users WHERE UserID=${userID}`).then(() =>
+        this.#makeQuery(`DELETE FROM users WHERE UUID=${uuid}`).then(() =>
         {
-            console.log(`Deleted user #${userID}!`);
+            console.log(`Deleted user with UUID ${uuid}!`);
         });
     }
 
@@ -133,9 +133,7 @@ module.exports = class DBManager
     {
         this.#makeQuery(`DELETE FROM ${process.env.USERS_TABLE}`).then(resp =>
         {
-            // console.log(resp);
             console.log("Deleted all users!");
-            // this.showEntries();
         });
     }
 }

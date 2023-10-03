@@ -7,7 +7,7 @@ const DBManager = require("../utils/DBManager");
 router.get("/clearDB", (req, res) =>
 {
     DBManager.showEntries();
-    // DBManager.deleteAllUsers();
+    DBManager.deleteAllUsers();
     res.redirect("/signup");
 });
 

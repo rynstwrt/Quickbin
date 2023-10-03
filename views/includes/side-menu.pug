@@ -8,18 +8,18 @@
 
     ul#side-menu-list
         - const HAS_LOGGED_IN = session.userID || session.userUsername || session.userEmail
-        li
-            if HAS_LOGGED_IN
-                a(href='/logout') Logout
-            else
-                a(href='/login') Login
         if !HAS_LOGGED_IN
             li
+                a(href='/login') Login
+            li
                 a(href='/signup') Sign Up
-        else
+        li
+            a(href='/') New Quickbin
+        if HAS_LOGGED_IN
             li
                 a(href="/saved") My Saved Bins
         li
-            a(href='/') New Quickbin
-        li
             a(href='https://www.ryanstew.art' target="_blank") About
+        if HAS_LOGGED_IN
+            li
+                a(href="/logout") Logout

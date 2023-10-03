@@ -53,7 +53,7 @@ router.post("/", urlEncodedParser, (req, res) =>
             return;
         }
 
-        res.redirect("/");
+        res.redirect("/login");
     });
 });
 
