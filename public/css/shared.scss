@@ -35,7 +35,7 @@ header
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
 
     a
     {
@@ -44,9 +44,7 @@ header
             font-size: 32px;
             font-family: $font-1;
             font-weight: $font-1-bold;
-            text-decoration: underline;
-            text-underline-offset: 5px;
-            text-decoration-color: $accent-2;
+            text-decoration: none;
         }
 
         &:last-of-type

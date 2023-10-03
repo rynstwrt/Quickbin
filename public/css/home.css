@@ -23,7 +23,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
 }
 header a {
   font-size: 30px;
@@ -34,9 +34,7 @@ header a:first-of-type {
   font-size: 32px;
   font-family: "AR One Sans", sans-serif;
   font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 5px;
-  text-decoration-color: #FFB261;
+  text-decoration: none;
 }
 header a:last-of-type {
   color: white;
@@ -190,6 +188,7 @@ button:hover {
 }
 #buttons button {
   height: 100%;
+  background-color: #14141A;
 }
 @media (min-width: 500px) {
   #buttons button {
