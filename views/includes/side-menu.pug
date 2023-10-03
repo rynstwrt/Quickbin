@@ -7,13 +7,15 @@
         h2#welcome-text= "Hello."
 
     ul#side-menu-list
+        - const HAS_LOGGED_IN = session.userID || session.userUsername || session.userEmail
         li
-            if session.userID || session.userUsername || session.userEmail
+            if HAS_LOGGED_IN
                 a(href='/logout') Logout
             else
                 a(href='/login') Login
-        li
-            a(href='/signup') Sign Up
+        if !HAS_LOGGED_IN
+            li
+                a(href='/signup') Sign Up
         li
             a(href='/') New Quickbin
         li
