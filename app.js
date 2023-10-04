@@ -7,7 +7,7 @@ const session = require("express-session");
 
 
 // ROUTE REQUIRES
-const indexRoute = require("./routes/index");
+const homeRoute = require("./routes/home");
 const loginRoute = require("./routes/login");
 const logoutRoute = require("./routes/logout");
 const signUpRoute = require("./routes/signup");
@@ -41,7 +41,7 @@ app.use((req, res, next) =>
 
 
 // APP ROUTING
-app.use("/", indexRoute);
+app.use("/", homeRoute);
 app.use("/login", loginRoute);
 app.use("/logout", logoutRoute);
 app.use("/signup", signUpRoute);

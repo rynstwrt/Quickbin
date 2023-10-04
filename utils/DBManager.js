@@ -162,4 +162,8 @@ module.exports = class DBManager
             console.log(resp);
         });
     }
+
+
+    // TO ADD EXTERNAL IP TO WHITELIST
+    // GRANT ALL ON quickbin_db.* TO ryn@'1.2.3.4' IDENTIFIED BY 'PASSWORD';
 }

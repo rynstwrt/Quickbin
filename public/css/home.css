@@ -23,7 +23,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 20px 0 20px;
+  padding: 20px;
 }
 header a {
   font-size: 30px;
@@ -162,19 +162,20 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 15px;
 }
 #center-container #center {
-  background-color: #26262F;
   width: 100%;
   height: 100%;
-  padding: 20px;
   border-radius: 10px;
 }
 @media (min-width: 500px) {
   #center-container #center {
     max-width: 500px;
   }
+}
+#center-container #center #editor {
+  width: 100%;
+  height: 100%;
 }
 #center-container #center textarea {
   resize: none;
