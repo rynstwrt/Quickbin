@@ -10,12 +10,13 @@ head
 body
     include includes/header
 
-    #center-container
-        #center
-            textarea#text-area
     form(action="/saved/save" method="POST")
-        button#save-button Save
-        // <button id="reset-button">New Quickbin</button>
+        #center-container
+            #center
+                textarea(name="text-content")#text-area
+        #buttons
+            button(type="submit")#save-button Save
+            // <button id="reset-button">New Quickbin</button>
 
     include includes/side-menu
     include includes/particles

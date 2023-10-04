@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
 router.use(express.static("public"));
+const bodyParser = require("body-parser");
+const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 const DBManager = require("../utils/DBManager");
 
-x
+
 router.get("/", (req, res) =>
 {
     DBManager.getUserPosts(req.session.userID).then(posts =>
@@ -13,9 +15,14 @@ router.get("/", (req, res) =>
 });
 
 
-router.post("/save", (req, res) =>
+router.post("/save", urlEncodedParser, (req, res) =>
 {
-    DBManager.savePost(req.body.userID, req.body.text);
+    // console.log(req.body)
+    const userUUID = req.session.userID;
+    const textContent = req.body["text-content"];
+
+    console.log(userUUID, textContent)
+    // DBManager.savePost(req.session.userID, req.body.text);
 });
 
 

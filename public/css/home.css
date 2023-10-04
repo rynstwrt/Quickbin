@@ -148,8 +148,17 @@ button:hover {
   z-index: 1;
 }
 
-#center-container {
+form {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#center-container {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -180,18 +189,19 @@ button:hover {
   font-weight: 300;
 }
 
-form {
+#buttons {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px 20px 20px;
+  width: 100%;
 }
-form button {
+#buttons button {
   height: 100%;
   background-color: #14141A;
 }
 @media (min-width: 500px) {
-  form button {
+  #buttons button {
     max-width: 500px;
   }
 }
