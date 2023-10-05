@@ -28,7 +28,7 @@ router.post("/", urlEncodedParser, (req, res) =>
 
         console.log("CORRECT PASSWORD FOR " + user["Username"] + "!");
 
-        req.session.userID = user["ID"];
+        req.session.userUUID = user["UUID"];
         req.session.userUsername = user["Username"];
         req.session.userEmail = user["Email"];
 

@@ -4,6 +4,8 @@ const path = require("path");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const session = require("express-session");
+const cookieParser = require("cookie-parser");
+// const cookieSession = require("cookie-session");
 
 
 // ROUTE REQUIRES
@@ -33,11 +35,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
-app.use((req, res, next) =>
-{
-    res.locals.session = req.session;
-    next();
-});
+app.use(cookieParser());
 
 
 // APP ROUTING

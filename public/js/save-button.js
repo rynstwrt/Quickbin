@@ -1,13 +1,15 @@
-const editorElement = document.querySelector("#editor");
 const saveButton = document.querySelector("#save-button");
 
 
-saveButton.addEventListener("click", () =>
+saveButton.addEventListener("click", async () =>
 {
-    fetch("/s", {
+    await fetch("/saved/save", {
         method: "POST",
         headers: {
             "Content-type": "application/json; charset=UTF-8"
-        }
+        },
+        body: JSON.stringify({
+            textContent: editor.getValue()
+        })
     });
 });

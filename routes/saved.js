@@ -17,12 +17,11 @@ router.get("/", (req, res) =>
 
 router.post("/save", urlEncodedParser, (req, res) =>
 {
-    // console.log(req.body)
-    const userUUID = req.session.userID;
-    const textContent = req.body["text-content"];
+    const userUUID = req.session.userUUID;
+    const textContent = req.body.textContent;
 
     console.log(userUUID, textContent)
-    // DBManager.savePost(req.session.userID, req.body.text);
+    DBManager.savePost(userUUID, textContent);
 });
 
 
