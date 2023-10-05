@@ -21,7 +21,7 @@ router.post("/", urlEncodedParser, (req, res) =>
     {
         if (!user || password !== user["Password"])
         {
-            res.redirect("/error?error=Incorrect email or password.&details=The email you entered does not exist or was submited with an invalid password.");
+            res.redirect("/error?error=Incorrect email or password.&details=The email you entered does not exist or was submitted with an invalid password.");
             res.end();
             return
         }

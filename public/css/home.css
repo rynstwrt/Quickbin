@@ -177,21 +177,45 @@ form {
   height: 100%;
 }
 
-#buttons {
+#options {
+  padding: 10px 20px 20px;
+}
+#options #selects {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 20px 20px;
+  padding: 20px 10px;
+}
+#options #selects select {
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  background-color: #14141A;
+  letter-spacing: 2px;
+  border: 1px solid #FFA343;
+  color: #FFA343;
+  border-radius: 5px;
+  padding: 8px 20px;
   width: 100%;
 }
-#buttons button {
+#options #buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+#options #buttons button {
   height: 100%;
   background-color: #14141A;
 }
 @media (min-width: 500px) {
-  #buttons button {
+  #options #buttons button {
     max-width: 500px;
   }
+}
+
+.ace_mobile-menu {
+  display: none !important;
 }
 
 /*# sourceMappingURL=home.css.map */

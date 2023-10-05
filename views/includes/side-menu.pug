@@ -7,7 +7,7 @@
         h2#welcome-text= "Hello."
 
     ul#side-menu-list
-        - const HAS_LOGGED_IN = session.userID || session.userUsername || session.userEmail
+        - const HAS_LOGGED_IN = session.userUUID || session.userUsername || session.userEmail
         if !HAS_LOGGED_IN
             li
                 a(href='/login') Login

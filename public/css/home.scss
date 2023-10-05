@@ -37,40 +37,58 @@ form
             width: 100%;
             height: 100%;
         }
-
-    //    textarea
-    //    {
-    //        resize: none;
-    //        width: 100%;
-    //        height: 100%;
-    //        background-color: transparent;
-    //        color: inherit;
-    //        font-family: $font-2;
-    //        font-size: 17px;
-    //        letter-spacing: 1px;
-    //        outline: none;
-    //        font-weight: $font-2-light;
-    //    }
     }
 }
 
 
-#buttons
+#options
 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 10px 20px 20px;
-    width: 100%;
 
-    button
+    #selects
     {
-        height: 100%;
-        background-color: $background;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 10px;
 
-        @include sm
+        select
         {
-            max-width: 500px;
+            font-size: 20px;
+            font-family: $font-2;
+            font-weight: $font-2-light;
+            background-color: $background;
+            letter-spacing: 2px;
+            border: 1px solid $accent;
+            color: $accent;
+            border-radius: 5px;
+            padding: 8px 20px;
+            width: 100%;
         }
     }
+
+    #buttons
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        button
+        {
+            height: 100%;
+            background-color: $background;
+
+            @include sm
+            {
+                max-width: 500px;
+            }
+        }
+    }
+}
+
+
+.ace_mobile-menu
+{
+    display: none !important
 }
