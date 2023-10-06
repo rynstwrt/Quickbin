@@ -28,6 +28,7 @@ router.post("/", urlEncodedParser, (req, res) =>
 
         console.log("CORRECT PASSWORD FOR " + user["Username"] + "!");
 
+        res.cookie("userUUID", user["UUID"], { maxAge: 2 * 60 * 60 * 1000 });
         req.session.userUUID = user["UUID"];
         req.session.userUsername = user["Username"];
         req.session.userEmail = user["Email"];
