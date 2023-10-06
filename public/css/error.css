@@ -36,12 +36,6 @@ header a:first-of-type {
   font-weight: 700;
   text-decoration: none;
 }
-header a:last-of-type {
-  color: white;
-}
-header a:last-of-type:hover {
-  color: #FFA343;
-}
 
 a {
   cursor: pointer;

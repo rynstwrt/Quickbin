@@ -25,141 +25,31 @@ module.exports = class DBManager
     }
 
 
-    static showEntries()
+    static async #getLastPostID()
     {
-        console.log("USERS TABLE ENTRIES:");
-
-        this.#makeQuery(`SELECT * FROM ${process.env.USERS_TABLE}`).then(response =>
-        {
-            console.log(response);
-        });
+        const resp = await this.#makeQuery(`SELECT LAST_INSERT_ID()`);
+        return resp[0]["LAST_INSERT_ID()"];
     }
 
 
-    static showColumns()
-    {
-        console.log("USERS TABLE COLUMNS:");
-
-        this.#makeQuery(`SHOW COLUMNS FROM ${process.env.USERS_TABLE}`).then(response =>
-        {
-            console.log(response);
-        });
-    }
-
-
-    // UserID, Email, Username, Password
-    static createUser(email, username, password)
-    {
-        console.log(`Creating user with username ${username}.`);
-
-        const columns = "(UUID, Email, Username, Password)";
-        const values = `(UUID(), '${email}', '${username}', '${password}')`;
-        const query = `INSERT INTO ${process.env.USERS_TABLE} ${columns} VALUES ${values};`;
-
-        this.#makeQuery(query).then(() =>
-        {
-            console.log(`Created user ${username}!`);
-        });
-    }
-
-
-    static deleteUser(uuid)
-    {
-        console.log(`Deleting user with UUID ${uuid}...`);
-
-        this.#makeQuery(`DELETE FROM users WHERE UUID=${uuid}`).then(() =>
-        {
-            console.log(`Deleted user with UUID ${uuid}!`);
-        });
-    }
-
-
-    static findUserByEmail(email)
+    static savePost(content, format)
     {
         return new Promise((res, rej) =>
         {
-            const query = `SELECT * FROM ${process.env.USERS_TABLE} WHERE Email='${email}'`;
+            const columns = "(Post_UUID, Content, Format)";
+            const values = `(UUID(), '${content}', '${format}')`;
+            const query = `INSERT INTO ${process.env.POSTS_TABLE} ${columns} VALUES ${values};`;
 
-            this.#makeQuery(query).then(response =>
+            this.#makeQuery(query).then(async resp =>
             {
-                if (response)
-                {
-                    const user = response[0];
-                    return res(user);
-                }
+                console.log("Wrote to DB.");
 
-                return rej();
+                const postID = await this.#getLastPostID();
+
+                const targetPost = await this.#makeQuery(`SELECT * FROM ${process.env.POSTS_TABLE} WHERE Post_ID=${postID}`);
+                const postUUID = targetPost[0].Post_UUID;
+                res(postUUID);
             });
-        });
-    }
-
-
-    static isEmailAndUsernameAvailable(email, username)
-    {
-        return new Promise((res, rej) =>
-        {
-            const query = `SELECT * FROM ${process.env.USERS_TABLE} WHERE Email='${email}' OR Username='${username}'`;
-
-            this.#makeQuery(query).then(response =>
-            {
-                const available = {
-                    email: true,
-                    username: true
-                };
-
-                for (const user of response)
-                {
-                    if (user["Email"].toLowerCase() === email.toLowerCase())
-                        available.email = false;
-
-                    if (user.Username.toLowerCase() === username.toLowerCase())
-                        available.username = false;
-                }
-
-                return res(available);
-            });
-        });
-    }
-
-
-    static getPasswordFromEmail(email)
-    {
-        const user = this.findUserByEmail(email);
-        return user["Password"];
-    }
-
-
-    static deleteAllUsers()
-    {
-        this.#makeQuery(`DELETE FROM ${process.env.USERS_TABLE}`).then(resp =>
-        {
-            console.log("Deleted all users!");
-        });
-    }
-
-
-    static getUserPosts(uuid)
-    {
-        return new Promise((res, rej) =>
-        {
-            this.#makeQuery(`SELECT * FROM ${process.env.POSTS_TABLE} WHERE User_UUID="${uuid}"`).then(resp =>
-            {
-                console.log(resp);
-                return res(resp);
-            });
-        });
-    }
-
-
-    static savePost(userUUID, text)
-    {
-        const columns = "(Post_UUID, User_UUID, Text)";
-        const values = `(UUID(), '${userUUID}', '${text}')`;
-        const query = `INSERT INTO ${process.env.POSTS_TABLE} ${columns} VALUES ${values};`;
-
-        this.#makeQuery(query).then(resp =>
-        {
-            console.log(resp);
         });
     }
 

@@ -9,11 +9,9 @@ const cookieParser = require("cookie-parser");
 
 // ROUTE REQUIRES
 const homeRoute = require("./routes/home");
-const loginRoute = require("./routes/login");
-const logoutRoute = require("./routes/logout");
-const signUpRoute = require("./routes/signup");
 const errorRoute = require("./routes/error");
 const devRoute = require("./routes/dev");
+const saveRoute = require("./routes/save");
 const savedRoute = require("./routes/saved");
 
 
@@ -39,12 +37,10 @@ app.use(cookieParser());
 
 // APP ROUTING
 app.use("/", homeRoute);
-app.use("/login", loginRoute);
-app.use("/logout", logoutRoute);
-app.use("/signup", signUpRoute);
 app.use("/error", errorRoute);
 app.use("/dev", devRoute);
-app.use("/saved", savedRoute);
+app.use("/save", saveRoute);
+app.use(/.*-.*-.*-.*-.*/, savedRoute)
 
 
 // APP LISTENING

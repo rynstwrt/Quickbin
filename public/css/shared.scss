@@ -47,15 +47,15 @@ header
             text-decoration: none;
         }
 
-        &:last-of-type
-        {
-            color: $text-color;
-
-            &:hover
-            {
-                color: $accent;
-            }
-        }
+        //&:last-of-type
+        //{
+        //    color: $text-color;
+        //
+        //    &:hover
+        //    {
+        //        color: $accent;
+        //    }
+        //}
 
         font-size: 30px;
         letter-spacing: 2px;

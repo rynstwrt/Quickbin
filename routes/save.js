@@ -6,10 +6,14 @@ const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 const DBManager = require("../utils/DBManager");
 
 
-router.get("/", urlEncodedParser, (req, res) =>
+router.post("/", urlEncodedParser, (req, res) =>
 {
-    // get uuid in database
-    res.send("asdf")
+    DBManager.savePost(req.body.textContent, req.body.format).then(postUUID =>
+    {
+        console.log(`/${postUUID}`)
+        res.redirect(`/${postUUID}`);
+        res.end();
+    });
 });
 
 
