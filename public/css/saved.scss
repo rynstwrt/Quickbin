@@ -1,0 +1,12 @@
+@import "shared";
+
+
+p
+{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: $font-2-medium;
+    letter-spacing: 2px;
+    color: $center-color;
+    margin-bottom: 15px;
+}

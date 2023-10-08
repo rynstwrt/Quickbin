@@ -209,4 +209,13 @@ button:hover {
   display: none !important;
 }
 
-/*# sourceMappingURL=home.css.map */
+p {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: #454552;
+  margin-bottom: 15px;
+}
+
+/*# sourceMappingURL=saved.css.map */

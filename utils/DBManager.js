@@ -32,25 +32,18 @@ module.exports = class DBManager
     }
 
 
-    static savePost(content, format)
+    static async savePost(content, format)
     {
-        return new Promise((res, rej) =>
-        {
-            const columns = "(Post_UUID, Content, Format)";
-            const values = `(UUID(), '${content}', '${format}')`;
-            const query = `INSERT INTO ${process.env.POSTS_TABLE} ${columns} VALUES ${values};`;
+        const columns = "(Post_UUID, Content, Format)";
+        const values = `(UUID(), '${content}', '${format}')`;
+        const query = `INSERT INTO ${process.env.POSTS_TABLE} ${columns} VALUES ${values};`;
 
-            this.#makeQuery(query).then(async resp =>
-            {
-                console.log("Wrote to DB.");
+        await this.#makeQuery(query);
 
-                const postID = await this.#getLastPostID();
+        const postID = await this.#getLastPostID();
+        const targetPost = await this.#makeQuery(`SELECT * FROM ${process.env.POSTS_TABLE} WHERE Post_ID=${postID}`);
 
-                const targetPost = await this.#makeQuery(`SELECT * FROM ${process.env.POSTS_TABLE} WHERE Post_ID=${postID}`);
-                const postUUID = targetPost[0].Post_UUID;
-                res(postUUID);
-            });
-        });
+        return targetPost[0].Post_UUID;
     }
 
 
@@ -68,7 +61,7 @@ module.exports = class DBManager
     }
 
 
-    static saveExistingPost(postUUID, textContent, format)
+    static overwritePost(postUUID, textContent, format)
     {
         return new Promise(async (res, rej) =>
         {

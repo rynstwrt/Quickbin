@@ -17,6 +17,8 @@ body {
   flex-direction: column;
   overflow: hidden;
   z-index: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
 }
 
 header {
@@ -74,7 +76,7 @@ button:hover {
   width: 100%;
   height: 100%;
   position: absolute;
-  background-color: #26262F;
+  background-color: #454552;
   left: 100%;
   transition: left 0.2s ease-in-out;
   display: flex;
@@ -143,6 +145,68 @@ button:hover {
   z-index: 10;
   opacity: 0.2;
   pointer-events: none;
+}
+
+#center-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#center-container #center {
+  width: 100%;
+  height: 100%;
+}
+@media (min-width: 500px) {
+  #center-container #center {
+    max-width: 500px;
+  }
+}
+#center-container #center #editor {
+  width: 100%;
+  height: 100%;
+}
+
+#options {
+  padding: 10px 20px 20px;
+}
+#options #selects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 10px;
+}
+#options #selects select {
+  font-size: 20px;
+  font-family: inherit;
+  font-weight: 300;
+  background-color: #141414;
+  letter-spacing: 2px;
+  border: 1px solid #FFA343;
+  color: #FFA343;
+  border-radius: 5px;
+  padding: 8px 20px;
+  width: 100%;
+}
+#options #buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+#options #buttons button {
+  height: 100%;
+  background-color: #141414;
+}
+@media (min-width: 500px) {
+  #options #buttons button {
+    max-width: 500px;
+  }
+}
+
+.ace_mobile-menu {
+  display: none !important;
 }
 
 /*# sourceMappingURL=error.css.map */
