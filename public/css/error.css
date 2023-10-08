@@ -209,4 +209,8 @@ button:hover {
   display: none !important;
 }
 
+.ace_layer.ace_gutter-layer.ace_folding-enabled {
+  background-color: #141414;
+}
+
 /*# sourceMappingURL=error.css.map */
