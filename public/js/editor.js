@@ -1,5 +1,5 @@
 const DEFAULT_THEME = "twilight";
-const DEFAULT_LANGUAGE = "javascript";
+const DEFAULT_LANGUAGE = "text";
 
 let theme = DEFAULT_THEME;
 let language = DEFAULT_LANGUAGE;
