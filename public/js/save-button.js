@@ -1,4 +1,5 @@
 const saveButton = document.querySelector("#save-button");
+const formatSelect = document.querySelector("#format-select");
 
 
 saveButton.addEventListener("click", async () =>
@@ -6,12 +7,12 @@ saveButton.addEventListener("click", async () =>
     const urlParams = new URLSearchParams(window.location.search);
     const postUUID = urlParams.get("id");
 
-    const json = !postUUID ? {
-        content: editor.getValue(),
+    const json = postUUID ? {
+        postUUID: postUUID,
+        content: btoa(editor.getValue()),
         format: formatSelect.value
     } : {
-        postUUID: postUUID,
-        content: editor.getValue(),
+        content: btoa(editor.getValue()),
         format: formatSelect.value
     }
 

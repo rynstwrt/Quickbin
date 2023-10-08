@@ -8,8 +8,8 @@ head
     // SCRIPTS
     script(src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/ace.min.js" integrity="sha512-lWZC9X194C2FiYIgjYlYT8KHk1Ciqb0f2KTPp977eHyqRNgRKs3wsD6hTPZbaKMtl9WEiJwbcHoZ6L8K/dnu6A==" crossorigin="anonymous" referrerpolicy="no-referrer")
     script(src="./js/editor.js" defer)
-    script(src="./js/post-loader.js" defer)
     script(src="./js/save-button.js" defer)
+    script(src="./js/post-loader.js" defer)
 
 body
     include includes/header
@@ -24,6 +24,7 @@ body
         #selects
             select#format-select
                 option(value="javascript") Javascript
+                option(value="python") Python
 
         #buttons
             button#save-button Overwrite

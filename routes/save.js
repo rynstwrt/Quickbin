@@ -39,6 +39,7 @@ router.post("/", urlEncodedParser, (req, res) =>
         DBManager.overwritePost(postUUID, content, format).then(() =>
         {
             console.log("/save?id=" + postUUID);
+            // res.redirect(307, `/save/?id=${postUUID}`);
         });
     }
     else
@@ -47,8 +48,8 @@ router.post("/", urlEncodedParser, (req, res) =>
         {
             console.log("/save?id=" + newPostUUID);
             // res.render("save", { content: content, format: format, session: req.session })
-            res.redirect(`/save/?id=${newPostUUID}`);
-            // res.end()
+            // res.redirect(307, `/save`);
+            res.end()
         });
     }
 });
