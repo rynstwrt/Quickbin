@@ -111,6 +111,7 @@ a:hover {
   #form select {
     margin-bottom: 0;
     margin-right: 5px;
+    min-width: 150px;
   }
 }
 #form button {
