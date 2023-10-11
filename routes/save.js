@@ -30,27 +30,15 @@ router.get("/", urlEncodedParser, (req, res) =>
 
 router.post("/", urlEncodedParser, (req, res) =>
 {
-    const postUUID = req.body.postUUID || undefined;
     const content = req.body.content;
     const format = req.body.format;
 
-    if (postUUID)
+    DBManager.savePost(content, format).then(newPostUUID =>
     {
-        DBManager.overwritePost(postUUID, content, format).then(() =>
-        {
-            console.log("/save?id=" + postUUID);
-            // res.redirect(307, `/save/?id=${postUUID}`);
-        });
-    }
-    else
-    {
-        DBManager.savePost(content, format).then(newPostUUID =>
-        {
-            console.log("/save?id=" + newPostUUID);
-            // res.render("save", { content: content, format: format, session: req.session })
-            // res.redirect(307, `/save`);,lM ?            res.end()
-        });
-    }
+        console.log("/save?id=" + newPostUUID);
+        res.redirect("/save?id=" + newPostUUID);
+        res.end();
+    });
 });
 
 
