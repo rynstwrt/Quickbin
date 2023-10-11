@@ -48,26 +48,6 @@ a:hover {
   color: #FFA343;
 }
 
-button {
-  background-color: transparent;
-  border: 1px solid #FFA343;
-  color: #FFA343;
-  padding: 15px 30px;
-  border-radius: 10px;
-  font-family: "AR One Sans", sans-serif;
-  font-size: 15px;
-  text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: 3px;
-  margin: 0 10px;
-  width: 100%;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-}
-button:hover {
-  background-color: #FFA343;
-  color: #141414;
-}
-
 #particles {
   position: absolute;
   top: 0;
@@ -95,39 +75,6 @@ button:hover {
   height: 100%;
 }
 
-#options {
-  padding: 10px 20px 20px;
-  width: 400px;
-  margin: 0 auto;
-}
-#options #selects {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px 10px;
-}
-#options #selects select {
-  font-size: 20px;
-  font-family: inherit;
-  font-weight: 300;
-  background-color: #141414;
-  letter-spacing: 2px;
-  border: 1px solid #FFA343;
-  color: #FFA343;
-  border-radius: 5px;
-  padding: 8px 20px;
-  width: 100%;
-}
-#options #buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-#options #buttons button {
-  height: 100%;
-  background-color: #141414;
-}
 .ace_mobile-menu {
   display: none !important;
 }
