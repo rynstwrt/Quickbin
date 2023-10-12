@@ -1,0 +1,26 @@
+doctype html
+head
+    include includes/head
+
+    // STYLESHEETS
+    link(rel='stylesheet' type='text/css' href='./css/home.css')
+    link(rel="stylesheet" type="text/css" href="./css/login-register.css")
+
+    // SCRIPTS
+    //script(src="./js/ace-min-noconflict/ace.js")
+    //script(src="./js/editor.js" defer)
+    //script(src="./js/save-button.js" defer)
+    //script(src="./js/post-setup.js" defer)
+
+body
+    include includes/header
+
+    #form-container
+        form(action="/login" method="POST")
+            input(type="text" name="username" placeholder="Username")
+            input(type="password" name="password" placeholder="Password")
+            input(type="submit" value="Login" class="submit-button")
+
+    include includes/side-menu
+
+    include includes/particles

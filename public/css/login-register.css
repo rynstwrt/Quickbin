@@ -189,4 +189,47 @@ button:hover {
   color: #141414;
 }
 
-/*# sourceMappingURL=home.css.map */
+#form-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+#form-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  margin: 0 auto;
+}
+#form-container form input {
+  display: block;
+  margin: 5px 0;
+}
+#form-container form input[type=text], #form-container form input[type=password] {
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+}
+#form-container form input[type=submit] {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid #FFA343;
+  color: #FFA343;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-family: "AR One Sans", sans-serif;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 3px;
+  margin-top: 10px;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+#form-container form input[type=submit]:hover {
+  background-color: #FFA343;
+  color: #141414;
+}
+
+/*# sourceMappingURL=login-register.css.map */

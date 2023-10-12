@@ -10,9 +10,10 @@ const cookieParser = require("cookie-parser");
 // ROUTE REQUIRES
 const homeRoute = require("./routes/home");
 const errorRoute = require("./routes/error");
-const devRoute = require("./routes/dev");
 const saveRoute = require("./routes/save");
-// const viewRoute = require("./routes/view");
+const loginRoute = require("./routes/login");
+const logoutRoute = require("./routes/logout");
+const registerRoute = require("./routes/register");
 
 
 // CONSTANTS
@@ -25,6 +26,7 @@ app.engine("pug", require("pug").__express)
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "pug");
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(session({
@@ -38,8 +40,10 @@ app.use(cookieParser());
 // APP ROUTING
 app.use("/", homeRoute);
 app.use("/error", errorRoute);
-app.use("/dev", devRoute);
 app.use("/save", saveRoute);
+app.use("/login", loginRoute);
+app.use("/logout", logoutRoute);
+app.use("/register", registerRoute);
 
 
 // APP LISTENING

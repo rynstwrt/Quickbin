@@ -32,12 +32,28 @@ router.post("/", urlEncodedParser, (req, res) =>
 {
     const content = req.body.content;
     const format = req.body.format;
+    const authorUsername = req.session.username;
 
-    DBManager.savePost(content, format).then(newPostUUID =>
+    DBManager.getAuthorUUIDFromUsername(authorUsername).then(authorUUID =>
     {
-        console.log("/save?id=" + newPostUUID);
-        res.redirect("/save?id=" + newPostUUID);
-        res.end();
+        if (authorUUID)
+        {
+            DBManager.savePost(content, format, authorUUID).then(newPostUUID =>
+            {
+                console.log("/save?id=" + newPostUUID);
+                res.redirect("/save?id=" + newPostUUID);
+                res.end();
+            });
+        }
+        else
+        {
+            DBManager.savePost(content, format).then(newPostUUID =>
+            {
+                console.log("/save?id=" + newPostUUID);
+                res.redirect("/save?id=" + newPostUUID);
+                res.end();
+            });
+        }
     });
 });
 

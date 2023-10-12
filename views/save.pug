@@ -11,8 +11,12 @@ head
     script(src="./js/post-loader.js" defer)
 
 body
-    header
-        include includes/header
+    include includes/header
+
+    //if session && session.user
+    //    include includes/inputs
+    //else
+    //    p [SAVED QUICKBIN: READ ONLY]
 
     p [SAVED QUICKBIN: READ ONLY]
 
@@ -21,5 +25,7 @@ body
     script.
         content= "#{content}"
         format= "#{format}"
+
+    include includes/side-menu
 
     include includes/particles

@@ -26,18 +26,21 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  z-index: 100;
-}
-header a {
-  font-size: 30px;
-  letter-spacing: 2px;
-  color: #FFA343;
 }
 header a:first-of-type {
-  font-size: 32px;
   font-family: "AR One Sans", sans-serif;
   font-weight: 700;
   text-decoration: none;
+  color: #FFA343;
+  font-size: 30px;
+  letter-spacing: 2px;
+}
+header a:last-of-type {
+  width: 20px;
+}
+header a:last-of-type img {
+  width: 100%;
+  height: 100%;
 }
 
 a {
@@ -81,6 +84,109 @@ a:hover {
 
 .ace_layer.ace_gutter-layer.ace_folding-enabled {
   background-color: #141414;
+}
+
+#inputs-form {
+  display: flex;
+  align-items: center;
+  padding: 0 20px 20px 20px;
+}
+#inputs-form button {
+  margin-right: 10px;
+}
+
+select {
+  font-size: 15px;
+  font-family: inherit;
+  font-weight: 300;
+  background-color: transparent;
+  letter-spacing: 2px;
+  border: 1px solid #FFA343;
+  color: #FFA343;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+button {
+  height: 100%;
+  background-color: transparent;
+  border: 1px solid #FFA343;
+  color: #FFA343;
+  padding: 5px 20px;
+  border-radius: 5px;
+  font-family: "AR One Sans", sans-serif;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 3px;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+button:hover {
+  background-color: #FFA343;
+  color: #141414;
+}
+
+#side-menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 101%;
+  background-color: #202026;
+  z-index: 100;
+  transition: left 0.1s ease-in-out;
+}
+#side-menu #side-menu-header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+}
+#side-menu #side-menu-header #exit-button {
+  width: 20px;
+}
+#side-menu #side-menu-header #exit-button img {
+  width: 100%;
+  height: 100%;
+}
+#side-menu h1 {
+  text-align: center;
+  font-size: 50px;
+  color: #FFA343;
+}
+#side-menu p {
+  margin-bottom: 50px;
+  font-size: 20px;
+  text-align: center;
+  font-family: 200;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+#side-menu #links {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+#side-menu #links a {
+  text-decoration: none;
+  background-color: transparent;
+  border: 1px solid #FFA343;
+  color: #FFA343;
+  padding: 5px 20px;
+  border-radius: 5px;
+  font-family: "AR One Sans", sans-serif;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 3px;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  min-width: 200px;
+  max-width: 300px;
+  margin: 10px auto;
+}
+#side-menu #links a:hover {
+  background-color: #FFA343;
+  color: #141414;
 }
 
 p {
