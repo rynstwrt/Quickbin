@@ -1,4 +1,4 @@
 # Quickbin
 Like Pastebin, but quicker.
 
-![Screenshot of Quickbin]("screenshot.png")
+![Screenshot of Quickbin]("./screenshot.png")
