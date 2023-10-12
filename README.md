@@ -1,2 +1,4 @@
 # Quickbin
-A quick pastebin-esque website.
+Like Pastebin, but quicker.
+
+![Screenshot of Quickbin]("screenshot.png")
