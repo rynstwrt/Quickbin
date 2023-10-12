@@ -6,7 +6,8 @@ const connection = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
-    database: process.env.DB_NAME
+    database: process.env.DB_NAME,
+    charset: "utf8"
 });
 
 
@@ -51,29 +52,6 @@ module.exports = class DBManager
     {
         const post = await this.#makeQuery(`SELECT * FROM ${process.env.POSTS_TABLE} WHERE Post_UUID='${postUUID}'`);
         return post[0];
-    }
-
-
-    static async #getPostIDFromPostUUID(postUUID)
-    {
-        const targetPost = await this.#makeQuery(`SELECT * FROM ${process.env.POSTS_TABLE} WHERE Post_UUID='${postUUID}'`);
-        return targetPost[0].Post_ID;
-    }
-
-
-    static overwritePost(postUUID, textContent, format)
-    {
-        return new Promise(async (res, rej) =>
-        {
-            console.log("resaving ", postUUID, textContent, format)
-
-            const postID = await this.#getPostIDFromPostUUID(postUUID);
-            const values = `('${postID}', '${postUUID}', '${textContent}', '${format}')`;
-            const query = `REPLACE INTO ${process.env.POSTS_TABLE} VALUES ${values}`;
-
-            const resp = await this.#makeQuery(query);
-            res(resp);
-        });
     }
 
 

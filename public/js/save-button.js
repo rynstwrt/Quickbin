@@ -14,7 +14,7 @@ saveButton.addEventListener("click",  () =>
             "Content-type": "application/json; charset=UTF-8"
         },
         body: JSON.stringify({
-            content: btoa(unescape(encodeURIComponent(editor.getValue()))),
+            content: btoa(encodeURIComponent(editor.getValue())),
             format: formatSelect.value
         }),
         redirect: "follow",
