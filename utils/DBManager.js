@@ -13,7 +13,7 @@ const connection = mysql.createConnection({
 
 module.exports = class DBManager
 {
-    static #makeQuery(query)
+    static makeQuery(query)
     {
         return new Promise((res, rej) =>
         {
@@ -26,9 +26,9 @@ module.exports = class DBManager
     }
 
 
-    static async #getLastPostID()
+    static async getLastPostID()
     {
-        const resp = await this.#makeQuery(`SELECT LAST_INSERT_ID()`);
+        const resp = await this.makeQuery(`SELECT LAST_INSERT_ID()`);
         return resp[0]["LAST_INSERT_ID()"];
     }
 
@@ -39,10 +39,10 @@ module.exports = class DBManager
         const values = `(UUID(), '${content}', '${format}')`;
         const query = `INSERT INTO ${process.env.POSTS_TABLE} ${columns} VALUES ${values};`;
 
-        await this.#makeQuery(query);
+        await this.makeQuery(query);
 
-        const postID = await this.#getLastPostID();
-        const targetPost = await this.#makeQuery(`SELECT * FROM ${process.env.POSTS_TABLE} WHERE Post_ID=${postID}`);
+        const postID = await this.getLastPostID();
+        const targetPost = await this.makeQuery(`SELECT * FROM ${process.env.POSTS_TABLE} WHERE Post_ID=${postID}`);
 
         return targetPost[0].Post_UUID;
     }
@@ -50,7 +50,7 @@ module.exports = class DBManager
 
     static async getPostFromPostUUID(postUUID)
     {
-        const post = await this.#makeQuery(`SELECT * FROM ${process.env.POSTS_TABLE} WHERE Post_UUID='${postUUID}'`);
+        const post = await this.makeQuery(`SELECT * FROM ${process.env.POSTS_TABLE} WHERE Post_UUID='${postUUID}'`);
         return post[0];
     }
 
