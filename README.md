@@ -1,4 +1,4 @@
 # Quickbin
-Like Pastebin, but quicker.
-
-![Screenshot of Quickbin]("./screenshot.png")
+Like Pastebin, but quicker. Saved quickbins are read-only.
+        
+![Screenshot of Quickbin](./screenshot.png)
