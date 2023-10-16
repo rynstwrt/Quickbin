@@ -155,7 +155,7 @@ button:hover {
   color: #FFA343;
 }
 #side-menu p {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   font-size: 20px;
   text-align: center;
   font-family: 200;
@@ -187,6 +187,33 @@ button:hover {
 #side-menu #links a:hover {
   background-color: #FFA343;
   color: #141414;
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 75px;
+}
+#content h2 {
+  max-width: 300px;
+  letter-spacing: 3px;
+  font-family: "Poppins", sans-serif !important;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 2.5rem;
+  margin-bottom: 20px;
+}
+#content p {
+  max-width: 300px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: #828286;
 }
 
 /*# sourceMappingURL=error.css.map */

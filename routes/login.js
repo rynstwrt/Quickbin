@@ -3,6 +3,7 @@ const router = express.Router();
 router.use(express.static("public"));
 const DBManager = require("../utils/DBManager");
 const uuid = require("uuid");
+const {auth} = require("mysql/lib/protocol/Auth");
 
 
 router.get("/", (req, res) =>
@@ -16,38 +17,26 @@ router.post("/", async (req, res) =>
     const username = req.body.username;
     const password = req.body.password;
 
-    if (!username || !password || !await DBManager.checkCredentials(username, password))
+    if (!username || !password)
     {
         res.redirect("/error?error=Invalid username or password.");
         res.end();
         return;
     }
 
-    // const userUUID = await DBManager.getAuthorUUIDFromUsername(username);
-    //
-    // const sessionToken = uuid.v4();
-    // const sessionExpiration = new Date().setFullYear(new Date().getFullYear() + 1);
-    //
-    // sessions[sessionToken] = {
-    //     sessionExpiration,
-    //     authorUsername: username,
-    //     authorPassword: password,
-    //     authorUUID: userUUID
-    // };
-    //
-    // res.cookie("user_session", sessionToken, { maxAge: sessionExpiration });
+    const authenticatedUser = await DBManager.authenticate(username, password);
+    if (!authenticatedUser)
+    {
+        res.redirect("/error?error=Invalid username or password.&details=Please try again.");
+        res.end();
+        return;
+    }
 
+    req.session.user = authenticatedUser;
+    req.session.save();
 
-    req.session.user = {
-        username: username.toLowerCase(),
-        password: password
-    };
-
-    // res.cookie("user", req.session.user);
-    // TODO: res.clearCookie("user"); in /logout
-
-
-    console.log("Logged in " + username);
+    console.log("Logged in user " + username);
+    console.log(req.session.user)
 
     res.redirect("/");
     res.end();

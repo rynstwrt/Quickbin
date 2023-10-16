@@ -155,7 +155,7 @@ button:hover {
   color: #FFA343;
 }
 #side-menu p {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   font-size: 20px;
   text-align: center;
   font-family: 200;
@@ -189,7 +189,7 @@ button:hover {
   color: #141414;
 }
 
-p {
+#read-only-text {
   text-align: center;
   text-transform: uppercase;
   font-weight: 500;

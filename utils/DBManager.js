@@ -1,6 +1,6 @@
 const mysql = require("mysql");
 require("dotenv").config();
-// const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 
 
 const connection = mysql.createConnection({
@@ -12,38 +12,85 @@ const connection = mysql.createConnection({
 });
 
 
-module.exports = class DBManager
+function makeQuery(query)
 {
-    static makeQuery(query)
+    return new Promise((res, rej) =>
     {
-        return new Promise((res, rej) =>
+        connection.query(query, (err, result, field) =>
         {
-            connection.query(query, (err, result, field) =>
+            if (err) return rej(err);
+            res(Object.values(JSON.parse(JSON.stringify(result))));
+        });
+    });
+}
+
+
+async function encryptPassword(password)
+{
+    return new Promise((res, rej) =>
+    {
+        bcrypt.genSalt(10, (err, salt) =>
+        {
+            if (err)
             {
-                if (err) return rej(err);
-                res(Object.values(JSON.parse(JSON.stringify(result))));
+                console.error(err);
+                rej(err);
+            }
+
+            bcrypt.hash(password, salt, (err, hash) =>
+            {
+                if (err)
+                {
+                    console.error(err);
+                    rej(err);
+                }
+
+                res(hash);
             });
         });
-    }
+    });
+}
 
 
-    static async getLastPostID()
+function comparePassword(plainPassword, hashPassword)
+{
+    return new Promise((res, rej) =>
     {
-        const resp = await this.makeQuery(`SELECT LAST_INSERT_ID()`);
-        return resp[0]["LAST_INSERT_ID()"];
-    }
+        bcrypt.compare(plainPassword, hashPassword, (err, isMatch) =>
+        {
+            if (err)
+            {
+                console.error(err);
+                rej(err)
+                return;
+            }
+
+            res(isMatch);
+        });
+    });
+}
 
 
-    static async savePost(content, format, author = undefined)
+async function getLastPostID()
+{
+    const resp = await makeQuery(`SELECT LAST_INSERT_ID()`);
+    return resp[0]["LAST_INSERT_ID()"];
+}
+
+
+module.exports = class DBManager
+{
+
+    static async savePost(content, format, authorUUID = undefined)
     {
-        const columns = author ? "(Post_UUID, Author_UUID, Content, Format)" : "(Post_UUID, Content, Format)";
-        const values = author ? `(UUID(), '${author}', '${content}', '${format}')` : `(UUID(), '${content}', '${format}')`;
+        const columns = authorUUID ? "(Post_UUID, Author_UUID, Content, Format)" : "(Post_UUID, Content, Format)";
+        const values = authorUUID ? `(UUID(), '${authorUUID}', '${content}', '${format}')` : `(UUID(), '${content}', '${format}')`;
         const query = `INSERT INTO ${process.env.POSTS_TABLE} ${columns} VALUES ${values};`;
 
-        await this.makeQuery(query);
+        await makeQuery(query);
 
-        const postID = await this.getLastPostID();
-        const targetPost = await this.makeQuery(`SELECT * FROM ${process.env.POSTS_TABLE} WHERE Post_ID=${postID}`);
+        const postID = await getLastPostID();
+        const targetPost = await makeQuery(`SELECT * FROM ${process.env.POSTS_TABLE} WHERE Post_ID=${postID}`);
 
         return targetPost[0].Post_UUID;
     }
@@ -51,51 +98,48 @@ module.exports = class DBManager
 
     static async getPostFromPostUUID(postUUID)
     {
-        const post = await this.makeQuery(`SELECT * FROM ${process.env.POSTS_TABLE} WHERE Post_UUID='${postUUID}'`);
+        const post = await makeQuery(`SELECT * FROM ${process.env.POSTS_TABLE} WHERE Post_UUID='${postUUID}'`);
         return post[0];
-    }
-
-
-    static async checkCredentials(username, password)
-    {
-        const row = await this.makeQuery(`SELECT * FROM ${process.env.USERS_TABLE} WHERE Username='${username}'`);
-        return row && row[0] && row[0].Password === password;
-    }
-
-
-    static async checkIfUsernameExists(username)
-    {
-        const row = await this.makeQuery(`SELECT * FROM ${process.env.USERS_TABLE} WHERE Username='${username}'`);
-        return row.length !== 0;
     }
 
 
     static async register(username, password)
     {
         const columns = "(User_UUID, Username, Password)";
-        const values = `(UUID(), '${username.toLowerCase()}', '${password}')`;
+        const values = `(UUID(), '${username.toLowerCase()}', '${await encryptPassword(password)}')`;
         const query = `INSERT INTO ${process.env.USERS_TABLE} ${columns} VALUES ${values};`;
 
-        await this.makeQuery(query);
+        await makeQuery(query);
     }
 
 
-    static async getAuthorUUIDFromUsername(username)
+    static async getUserFromUsername(username)
     {
-        const row = await this.makeQuery(`SELECT * FROM ${process.env.USERS_TABLE} WHERE Username='${username.toLowerCase()}'`);
-        return row[0].User_UUID;
+        const resp = await makeQuery(`SELECT * FROM ${process.env.USERS_TABLE} WHERE Username='${username}'`);
+        return resp[0] || null;
     }
 
 
-    // static async getCurrentAuthorUUID()
+    static async authenticate(username, password)
+    {
+        const user = await this.getUserFromUsername(username);
+        if (!user) return false;
+
+        const valid = await comparePassword(password, user.Password);
+        return valid ? user : false;
+    }
+
+
+    // static async getUserFromUsername(username)
     // {
-    //     if (!req.session || !req.session.user)
-    //     {
-    //
-    //     }
+    //     const user = await makeQuery(`SELECT * FROM ${process.env.USERS_TABLE} WHERE Username='${username.toLowerCase()}'`)
+    //     return user[0];
     // }
 
 
     // TO ADD EXTERNAL IP TO WHITELIST
     // GRANT ALL ON quickbin_db.* TO ryn@'1.2.3.4' IDENTIFIED BY 'PASSWORD';
+
+    // TO CLEAR ALL ROWS
+    // TRUNCATE posts
 }

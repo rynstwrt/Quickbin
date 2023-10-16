@@ -5,8 +5,21 @@ router.use(express.static("public"));
 
 router.get("/", (req, res) =>
 {
-    req.session.destroy();
+    if (!req.session.user)
+    {
+        res.redirect("/");
+        res.end();
+        return;
+    }
+
+    const username = req.session.user.Username;
+    req.session.destroy(() =>
+    {
+        console.log("Logged out user " + username);
+    });
+
     res.redirect("/");
+    res.end();
 });
 
 

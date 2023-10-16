@@ -9,23 +9,23 @@ head
     script(src="./js/ace-min-noconflict/ace.js")
     script(src="./js/editor.js" defer)
     script(src="./js/post-loader.js" defer)
-    script(src="./js/edit-button.js" defer)
-
 body
     include includes/header
 
     if hasEditPermission
         #inputs-form
-            button#edit-button Edit
+            button#overwrite-button Overwrite
+            include includes/format-select
+
+            script(src="./js/overwrite-button.js" defer)
+            script(src="./js/format-select-handler.js" defer)
 
     include includes/editor
 
     script.
         content= "#{content}"
         format= "#{format}"
-        hasEditPermission="#{hasEditPermission}"
-
-        ace.edit("editor").setReadOnly(true);
+        hasEditPermission= "#{hasEditPermission}"
 
     include includes/side-menu
     include includes/particles

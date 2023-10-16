@@ -26,7 +26,7 @@ router.get("/", urlEncodedParser, (req, res) =>
         }
 
         const hasEditPermission = req.session && req.session.user && post.Author_UUID === req.session.user.User_UUID;
-        res.render("save", { content: post.Content, format: post.Format, hasEditPermission: hasEditPermission, session: req.session });
+        res.render("edit", { content: post.Content, format: post.Format, hasEditPermission: hasEditPermission, session: req.session });
     });
 });
 

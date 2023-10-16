@@ -1,1 +1,34 @@
 @import "shared";
+
+
+#content
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 75px;
+
+    h2
+    {
+        max-width: 300px;
+        letter-spacing: 3px;
+        font-family: $font-2 !important;
+        font-weight: $font-2-semibold;
+        font-size: 30px;
+        line-height: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    p
+    {
+        max-width: 300px;
+        font-family: $font-2;
+        font-weight: $font-2-light;
+        font-size: 20px;
+        letter-spacing: 2px;
+        color: $light-gray;
+    }
+}

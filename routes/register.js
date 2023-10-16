@@ -30,15 +30,14 @@ router.post("/", async (req, res) =>
         return;
     }
 
-    if (await DBManager.checkIfUsernameExists(username.toLowerCase()))
+    if (await DBManager.getUserFromUsername(username))
     {
-        res.redirect("/error?error=Username already exists.");
+        res.redirect("/error?error=Username already exists.&details=Please choose another username.");
         res.end();
         return;
     }
 
     await DBManager.register(username, password);
-
     console.log("Registered user " + username);
 
     res.redirect("/login");
