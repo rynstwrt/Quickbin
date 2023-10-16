@@ -9,7 +9,6 @@ if (overwriteButton)
 
     overwriteButton.addEventListener("click", () =>
     {
-        console.log("A")
         fetch("/edit", {
             method: "POST",
             mode: "cors",
