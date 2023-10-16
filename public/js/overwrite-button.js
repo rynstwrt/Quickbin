@@ -1,12 +1,16 @@
-const overwriteButton = document.querySelector("#save-button");
+const overwriteButton = document.querySelector("#overwrite-button");
 const formatSelect = document.querySelector("#format-select");
 
 
 if (overwriteButton)
 {
+    const urlParams = new URLSearchParams(window.location.search);
+    const postUUID = urlParams.get("id");
+
     overwriteButton.addEventListener("click", () =>
     {
-        fetch("/overwrite", {
+        console.log("A")
+        fetch("/edit", {
             method: "POST",
             mode: "cors",
             cache: "no-cache",

@@ -96,6 +96,13 @@ module.exports = class DBManager
     }
 
 
+    static async overwritePost(newContent, newFormat, postUUID)
+    {
+        const query = `UPDATE ${process.env.POSTS_TABLE} SET Content='${newContent}', Format='${newFormat}' WHERE Post_UUID='${postUUID}'`;
+        await makeQuery(query);
+    }
+
+
     static async getPostFromPostUUID(postUUID)
     {
         const post = await makeQuery(`SELECT * FROM ${process.env.POSTS_TABLE} WHERE Post_UUID='${postUUID}'`);

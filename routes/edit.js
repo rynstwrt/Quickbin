@@ -33,24 +33,16 @@ router.get("/", urlEncodedParser, (req, res) =>
 
 router.post("/", urlEncodedParser, (req, res) =>
 {
+    const postUUID = req.body.postUUID;
     const content = req.body.content;
     const format = req.body.format;
 
     if (!req.session || !req.session.user)
-    {
-        DBManager.savePost(content, format).then(newPostUUID =>
-        {
-            console.log("/save?id=" + newPostUUID);
-            res.redirect("/save?id=" + newPostUUID);
-            res.end();
-        });
-
         return;
-    }
 
-    DBManager.savePost(content, format, req.session.user.User_UUID).then(postUUID =>
+    DBManager.overwritePost(content, format, postUUID).then(() =>
     {
-        console.log("/save?id=" + postUUID);
+        console.log("/edit?id=" + postUUID);
         res.redirect("/save?id=" + postUUID);
         res.end();
     });
