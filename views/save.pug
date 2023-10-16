@@ -13,12 +13,13 @@ head
 body
     include includes/header
 
-    //if session && session.user
-    //    include includes/inputs
-    //else
-    //    p [SAVED QUICKBIN: READ ONLY]
+    if session && session.user
+        #inputs-form
+            button#save-button Overwrite
 
-    p [SAVED QUICKBIN: READ ONLY]
+            include includes/format-select
+    else
+        p [SAVED QUICKBIN: READ ONLY]
 
     include includes/editor
 

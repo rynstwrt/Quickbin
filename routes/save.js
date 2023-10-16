@@ -23,7 +23,9 @@ router.get("/", urlEncodedParser, (req, res) =>
             return;
         }
 
-        res.render("save", { postUUID: post.Post_UUID, content: post.Content, format: post.Format, session: req.session });
+        if (post.Author_UUID === req.session.)
+
+        res.render("save", { postUUID: post.Post_UUID, content: post.Content, format: post.Format, authorUUID: post.Author_UUID, session: req.session });
     });
 });
 
@@ -32,28 +34,27 @@ router.post("/", urlEncodedParser, (req, res) =>
 {
     const content = req.body.content;
     const format = req.body.format;
-    const authorUsername = req.session.username;
 
-    DBManager.getAuthorUUIDFromUsername(authorUsername).then(authorUUID =>
+    if (!req.session || !req.session.user)
     {
-        if (authorUUID)
+        DBManager.savePost(content, format).then(newPostUUID =>
         {
-            DBManager.savePost(content, format, authorUUID).then(newPostUUID =>
-            {
-                console.log("/save?id=" + newPostUUID);
-                res.redirect("/save?id=" + newPostUUID);
-                res.end();
-            });
-        }
-        else
+            console.log("/save?id=" + newPostUUID);
+            res.redirect("/save?id=" + newPostUUID);
+            res.end();
+        });
+
+        return;
+    }
+
+    DBManager.getAuthorUUIDFromUsername(req.session.user.username).then(authorUUID =>
+    {
+        DBManager.savePost(content, format, authorUUID).then(newPostUUID =>
         {
-            DBManager.savePost(content, format).then(newPostUUID =>
-            {
-                console.log("/save?id=" + newPostUUID);
-                res.redirect("/save?id=" + newPostUUID);
-                res.end();
-            });
-        }
+            console.log("/save?id=" + newPostUUID);
+            res.redirect("/save?id=" + newPostUUID);
+            res.end();
+        });
     });
 });
 

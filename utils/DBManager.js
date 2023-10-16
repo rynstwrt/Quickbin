@@ -37,7 +37,7 @@ module.exports = class DBManager
     static async savePost(content, format, author = undefined)
     {
         const columns = author ? "(Post_UUID, Author_UUID, Content, Format)" : "(Post_UUID, Content, Format)";
-        const values = author ? `(UUID(), '${author}', ${content}', '${format}')` : `(UUID(), '${content}', '${format}')`;
+        const values = author ? `(UUID(), '${author}', '${content}', '${format}')` : `(UUID(), '${content}', '${format}')`;
         const query = `INSERT INTO ${process.env.POSTS_TABLE} ${columns} VALUES ${values};`;
 
         await this.makeQuery(query);
@@ -82,14 +82,17 @@ module.exports = class DBManager
 
     static async getAuthorUUIDFromUsername(username)
     {
-        const row = await this.makeQuery(`SELECT * FROM ${process.env.USERS_TABLE} WHERE Username=${username.toLowerCase()}`);
-        return row[0].Author_UUID;
+        const row = await this.makeQuery(`SELECT * FROM ${process.env.USERS_TABLE} WHERE Username='${username.toLowerCase()}'`);
+        return row[0].User_UUID;
     }
 
 
-    // static async login(username, password)
+    // static async getCurrentAuthorUUID()
     // {
+    //     if (!req.session || !req.session.user)
+    //     {
     //
+    //     }
     // }
 
 

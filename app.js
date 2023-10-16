@@ -28,13 +28,24 @@ app.set("view engine", "pug");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: false
 }));
-app.use(cookieParser());
+app.use(cookieParser(process.env.SESSION_SECRET));
+// app.use((req, res, next) =>
+// {
+//     const cookies = req.headers.cookie;
+//     if (!cookies)
+//     {
+//         console.log(cookies)
+//     }
+//
+//     next();
+// })
 
 
 // APP ROUTING

@@ -9,5 +9,19 @@ const editor = ace.edit("editor");
 editor.setTheme(`ace/theme/${theme}`);
 editor.session.setMode(`ace/mode/${language}`);
 
+
 if (window.location.href.includes("/save/"))
+{
     editor.setReadOnly(true);
+    // fetch("/session").then(resp =>
+    // {
+    //     resp.json().then(session =>
+    //     {
+    //         console.log(session);
+    //     });
+    // });
+}
+
+
+// if (window.location.href.includes("/save/"))
+//     editor.setReadOnly(true);

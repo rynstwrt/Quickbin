@@ -41,7 +41,7 @@ router.post("/", async (req, res) =>
 
     console.log("Registered user " + username);
 
-    res.redirect("/");
+    res.redirect("/login");
     res.end();
 });
 
