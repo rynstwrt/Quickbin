@@ -18,11 +18,8 @@ body
     #form-container
         form(action="/login" method="POST")
             input(type="text" name="username" placeholder="Username" value="test")
-            input(type="password" name="password" placeholder="Password" value="test")
+            input(type="password" name="password" placeholder="Password" value="test" min=4)
             input(type="submit" value="Login" class="submit-button")
-            //input(type="text" name="username" placeholder="Username")
-            //input(type="password" name="password" placeholder="Password")
-            //input(type="submit" value="Login" class="submit-button")
 
     include includes/side-menu
 
