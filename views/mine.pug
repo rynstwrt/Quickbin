@@ -7,31 +7,16 @@ head
     link(rel="stylesheet" type="text/css" href="./css/mine.css")
 
     // SCRIPTS
-    script(src="./js/mine-buttons" defer)
-    //script(src="./js/ace-min-noconflict/ace.js")
-    //script(src="./js/editor.js" defer)
-    //script(src="./js/save-button.js" defer)
-    //script(src="./js/format-select-handler.js" defer)
-
+    script(src="./js/mine-buttons.js" defer)
 body
     include includes/header
-
-    //#form-container
-    //    form(action="/login" method="POST")
-    //        input(type="text" name="username" placeholder="Username" value="test")
-    //        input(type="password" name="password" placeholder="Password" value="test")
-    //        input(type="submit" value="Login" class="submit-button")
-    //        //input(type="text" name="username" placeholder="Username")
-    //        //input(type="password" name="password" placeholder="Password")
-    //        //input(type="submit" value="Login" class="submit-button")
 
     script.
         posts= "#{posts}"
 
     div#mine-container
         each post in posts
-
-            a(href=`/save/?id=${post.PostUUID}` class="mine-button") Post ID ##{post.Post_ID}
+            a(href=`/save/?id=${post.Post_UUID}` class="mine-button") Quickbin ID ##{post.Post_ID}
 
     include includes/side-menu
 

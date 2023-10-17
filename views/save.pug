@@ -10,13 +10,14 @@ head
     script(src="./js/editor.js" defer)
     script(src="./js/post-loader.js" defer)
     script(src="./js/edit-button.js" defer)
-
+    script(src="./js/delete-button.js" defer)
 body
     include includes/header
 
     if hasEditPermission
         #inputs-form
             button#edit-button Edit
+            button#delete-button Delete
 
     p#read-only-text [Read Only]
 

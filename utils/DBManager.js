@@ -144,6 +144,13 @@ module.exports = class DBManager
     }
 
 
+    static async deletePost(postUUID)
+    {
+        const query = `DELETE FROM ${process.env.POSTS_TABLE} WHERE Post_UUID='${postUUID}'`;
+        await makeQuery(query);
+    }
+
+
     // static async getUserFromUsername(username)
     // {
     //     const user = await makeQuery(`SELECT * FROM ${process.env.USERS_TABLE} WHERE Username='${username.toLowerCase()}'`)

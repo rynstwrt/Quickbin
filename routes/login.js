@@ -8,6 +8,13 @@ const {auth} = require("mysql/lib/protocol/Auth");
 
 router.get("/", (req, res) =>
 {
+    if (req.session && req.session.user)
+    {
+        res.redirect("/");
+        res.end();
+        return;
+    }
+
     res.render("login", { session: req.session });
 });
 
@@ -37,7 +44,6 @@ router.post("/", async (req, res) =>
     req.session.save();
 
     console.log("Logged in user " + username);
-    console.log(req.session.user)
 
     res.redirect("/");
     res.end();

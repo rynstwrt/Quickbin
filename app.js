@@ -4,7 +4,6 @@ const path = require("path");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const session = require("express-session");
-// const cookieParser = require("cookie-parser");
 
 
 // ROUTE REQUIRES
@@ -12,6 +11,7 @@ const homeRoute = require("./routes/home");
 const errorRoute = require("./routes/error");
 const saveRoute = require("./routes/save");
 const editRoute = require("./routes/edit");
+const deleteRoute = require("./routes/delete");
 const loginRoute = require("./routes/login");
 const logoutRoute = require("./routes/logout");
 const registerRoute = require("./routes/register");
@@ -48,6 +48,7 @@ app.use("/", homeRoute);
 app.use("/error", errorRoute);
 app.use("/save", saveRoute);
 app.use("/edit", editRoute);
+app.use("/delete", deleteRoute);
 app.use("/login", loginRoute);
 app.use("/logout", logoutRoute);
 app.use("/register", registerRoute);
