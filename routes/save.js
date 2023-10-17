@@ -38,20 +38,24 @@ router.post("/", urlEncodedParser, (req, res) =>
 
     if (!req.session || !req.session.user)
     {
-        DBManager.savePost(content, format).then(newPostUUID =>
+        DBManager.savePost(content, format).then(newPost =>
         {
-            console.log("/save?id=" + newPostUUID);
-            res.redirect("/save?id=" + newPostUUID);
+            console.log("/save?id=" + newPost.Post_UUID);
+            res.redirect("/save?id=" + newPost.Post_UUID);
             res.end();
         });
 
         return;
     }
 
-    DBManager.savePost(content, format, req.session.user.User_UUID).then(postUUID =>
+    DBManager.savePost(content, format, req.session.user.User_UUID).then(post =>
     {
-        console.log("/save?id=" + postUUID);
-        res.redirect("/save?id=" + postUUID);
+        console.log("/save?id=" + post.Post_UUID);
+
+        req.session.user["posts"].push(post);
+        req.session.save();
+
+        res.redirect("/save?id=" + post.Post_UUID);
         res.end();
     });
 });

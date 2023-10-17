@@ -15,6 +15,7 @@ const editRoute = require("./routes/edit");
 const loginRoute = require("./routes/login");
 const logoutRoute = require("./routes/logout");
 const registerRoute = require("./routes/register");
+const mineRoute = require("./routes/mine");
 
 
 // CONSTANTS
@@ -50,6 +51,7 @@ app.use("/edit", editRoute);
 app.use("/login", loginRoute);
 app.use("/logout", logoutRoute);
 app.use("/register", registerRoute);
+app.use("/mine", mineRoute);
 
 
 // APP LISTENING

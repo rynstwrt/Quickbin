@@ -32,6 +32,7 @@ router.post("/", async (req, res) =>
         return;
     }
 
+    authenticatedUser["posts"] = await DBManager.getUserPosts(authenticatedUser.User_UUID);
     req.session.user = authenticatedUser;
     req.session.save();
 

@@ -92,7 +92,7 @@ module.exports = class DBManager
         const postID = await getLastPostID();
         const targetPost = await makeQuery(`SELECT * FROM ${process.env.POSTS_TABLE} WHERE Post_ID=${postID}`);
 
-        return targetPost[0].Post_UUID;
+        return targetPost[0];
     }
 
 
@@ -134,6 +134,13 @@ module.exports = class DBManager
 
         const valid = await comparePassword(password, user.Password);
         return valid ? user : false;
+    }
+
+
+    static async getUserPosts(userUUID)
+    {
+        const query = `SELECT * FROM ${process.env.POSTS_TABLE} WHERE Author_UUID='${userUUID}'`;
+        return await makeQuery(query);
     }
 
 
