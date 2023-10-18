@@ -8,6 +8,7 @@ head
 
     // SCRIPTS
     script(src="./js/mine-buttons.js" defer)
+    script(src="./js/mine-delete-buttons.js" defer)
 body
     include includes/header
 
@@ -16,7 +17,9 @@ body
 
     div#mine-container
         each post in posts
-            a(href=`/save/?id=${post.Post_UUID}` class="mine-button") Quickbin ID ##{post.Post_ID}
+            div#mine-row
+                a(href=`/save/?id=${post.Post_UUID}` class="mine-button") Quickbin ID ##{post.Post_ID}
+                button(class="delete-button" name=`${post.Post_UUID}`) Delete
 
     include includes/side-menu
 

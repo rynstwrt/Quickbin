@@ -151,13 +151,6 @@ module.exports = class DBManager
     }
 
 
-    // static async getUserFromUsername(username)
-    // {
-    //     const user = await makeQuery(`SELECT * FROM ${process.env.USERS_TABLE} WHERE Username='${username.toLowerCase()}'`)
-    //     return user[0];
-    // }
-
-
     // TO ADD EXTERNAL IP TO WHITELIST
     // GRANT ALL ON quickbin_db.* TO ryn@'1.2.3.4' IDENTIFIED BY 'PASSWORD';
 
