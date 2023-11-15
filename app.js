@@ -19,7 +19,7 @@ const mineRoute = require("./routes/mine");
 
 
 // CONSTANTS
-const PORT = process.env.PORT || 3117;
+const PORT = process.env.PORT || 80;
 
 
 // APP CREATION & CONFIG
